@@ -1,0 +1,56 @@
+% !TeX spellcheck = en_US
+\section{Gaits}
+
+One way to identify the gait of terrestrial legged animals is by their footfall sequence. Gaits can be quantified by the phase relationship of the individual legs and expressed as a fraction or percentage of the time of foot contact to the stride\footnote{A stride consists of two consecutive steps.} period. For example, in bipedal walking, one foot lands at the beginning of the stride (\ie at$~0\,\textrm{\si{\percent}}$) and the second foot lands at mid-stride (\ie at$~50\,\textrm{\si{\percent}}$), representing one entire step. However, a phase-based definition of gait is often incomplete and may result in an inability to distinguish between different gaits because they may have similar or even identical phase relationships. For example, bipedal walking (see figure~\ref{fig:walk-run}, black) and running (see figure~\ref{fig:walk-run}, orange) share the same left-right-left sequence of footfalls, with the phases of first contact of the alternating feet at$~0\,\textrm{\si{\percent}}$ and$~50\,\textrm{\si{\percent}}$ of the stride period, respectively. Therefore, the distinction between walking and running has traditionally been based on the duty factor, which represents the duration of a given footfall as a fraction of the stride period. On this basis, human running and walking can be distinguished, as human running has a defined duty factor of <0.5, which specifies a distinct air phase. However, in multi-legged running the steps with duty factor <0.5 can follow each other in such a way that there is no air phase. Furthermore, considering birds, the difference between running and walking becomes blurred, as they exhibit "grounded" running with no air phase when the duty factor is >0.5. Although the distinction between running and walking based on the duty factor is very straightforward, criteria beyond temporal footfall metrics, such as evaluating gaits via~\glsxtrshort{mca}, are needed to distinguish the underlying physics of gait.~\cite{Lee2018} For that purpose,~\citeauthor*{Lee2011}~\cite{Lee2011} provided the first experimental evidence in~\citeyear{Lee2011} showing that a collision-based approach can differentiate quadrupedal gaits and quantify interspecific differences. The following two sections give insight into the distinction between symmetric and asymmetric gaits as well as bipedal gaits, which, however, contrary to what was assumed at the beginning of this thesis, is not of great importance in the further course of this work.
+
+    \subsection{Symmetrical vs. Asymmetrical Gaits}
+
+    Legged gaits can be classified as symmetrical and asymmetrical, according to the phase relationship of the left-right pairs of legs, regardless of the number of pairs. If the left and right leg of a pair are out of phase by half a stride, the gait is defined as symmetrical - if not, the gait is defined as asymmetrical. Examples of a symmetrical gait include the bipedal walking of humans, the quadrupedal trotting of dogs, the pacing of camels, and the six-legged trotting of cockroaches, where all left-right pairs of front, middle, and hind legs are one-half stride cycle out of phase with one another. The number of legs limits the number of leg sequencing options, such that bipedal striding gaits are restricted to symmetric (walking (back) and running (orange), see figure~\ref{fig:walk-run}) and asymmetric gaits (skipping (black) and hopping (orange), see figure~\ref{fig:skip-hop}). Quadrupeds use five symmetrical gaits (lateral and provisional diagonal sequence walking (black), trotting (orange, see figure~\ref{fig:walk-trot}), pacing and ambling) and six asymmetrical gaits (lope, transverse and rotary gallops (black), half-bound (orange, see figure~\ref{fig:gallop-half-bound}), bound, and pronk).~\cite{Lee2018} However, note that these are broad definitions and that phase separations between foot contacts show substantial variation within gaits, as can be seen in~\citeauthor{Hildebrand1965}'s plots (\cite{Hildebrand1965}~\cite{Hildebrand1968}) for the gaits of horses and dogs. In summary, the difference between symmetrical and asymmetrical gaits lies in the coordination of the legs, with symmetrical gaits involving both legs on the same side moving together and asymmetrical gaits involving diagonally opposite
+    pairs of legs moving together.
+
+    \begin{figure}[htb]%
+        \centering%
+        \begin{subfigure}{0.45\linewidth}%
+            \centering%
+            \includestandalone{gaits/walk-run/walk-run}
+            \caption{walk (black), \textcolor{TUMOrange}{run (orange)}}
+            \label{fig:walk-run}
+        \end{subfigure}%
+        %
+        \hfil%
+        %
+        \begin{subfigure}{0.45\linewidth}%
+            \centering%
+            \includestandalone{gaits/walk-trot/walk-trot}
+            \caption{walk (black), \textcolor{TUMOrange}{trot/pace (orange)}}
+            \label{fig:walk-trot}
+        \end{subfigure}%
+        %
+        \vfil%
+         %
+         \begin{subfigure}{0.45\linewidth}%
+            \centering%
+            \includestandalone{gaits/skip-hop/skip-hop}
+            \caption{skip (black), \textcolor{TUMOrange}{hop (orange)}}
+            \label{fig:skip-hop}
+        \end{subfigure}%
+        %
+        \hfil%
+        %
+        \begin{subfigure}{0.45\linewidth}%
+            \centering%
+            \includestandalone{gaits/gallop-half-bound/gallop-half-bound}
+            \caption{gallop (black), \textcolor{TUMOrange}{half-bound (orange)}}
+            \label{fig:gallop-half-bound}
+        \end{subfigure}%
+        %
+        \caption{Common gaits of bipeds (\subref{fig:walk-run},~\subref{fig:skip-hop}) and quadrupeds (\subref{fig:walk-trot},~\subref{fig:gallop-half-bound}). Typical foot contact phases (black and orange dots) are represented as a fraction of stride period on polar plots. The outer ring represents the rear limb contacts (blue) and the inner ring represents the front limb contacts (green). Half a cycle out of phase of fore and hind legs indicates symmetrical gait (\subref{fig:walk-run},~\subref{fig:walk-trot}), substantial deviations of this in either pair indicates asymmetrical gait (\subref{fig:skip-hop},~\subref{fig:gallop-half-bound}). (Adapted from~\cite{Lee2018}, p. 3)}%
+        \label{fig:gaits}%
+    \end{figure}%
+    % \noindent
+    %
+
+    \subsection{Bipedal Gaits}
+
+    Bipedal striding gaits, including that of humans, are symmetrical by definition (see figure~\ref{fig:walk-run}). Biomechanically, bipedal gaits involve the coordinated movement of multiple joints, including the ankle, knee, and hip, as well as the interaction of the musculoskeletal system and the central nervous system. The foot must make contact with the ground in a manner that provides stability and propulsive forces, while also allowing for the transfer of energy from one limb to the other. These gaits can be found today mainly in birds and in earlier times in theropod dinosaurs, which also represent the greatest diversity of bipedal runners. Humans and most birds\footnote{Except small songbirds, which typically have more of a hopping than walking gait~\cite{Lee2018}.} walk at slow speeds and run at fast speeds.~\cite{Lee2018} Some great apes and monkeys are volitional bipeds, but usually only for rather short distances. At top speed, some lizards~\cite{Irschick1999} and cockroaches~\cite{Full1991} can bring their bodies into an almost upright posture and thus achieve bipedal running movements, increasing speed by expanding stride length. In general, bipeds achieve greater absolute stride lengths than quadrupeds of the same body mass~\cite{Reynolds1987}. This has been argued to be an advantage for endurance runners as our own species, for example while engaging in persistence hunting quadrupeds or aggressive scavenging in competition with them~\cite{Carrier1984}.
+    

@@ -1,0 +1,46 @@
+\begin{frame}{Comparison criteria}%
+    \begin{columns}[T,onlytextwidth]%
+        \begin{column}[T]{0.48\textwidth}%
+            \begin{itemize}
+                \item Maximum allowable perturbation~\cite{Rummel2008}~\cite{Maus2010}
+                    \begin{itemize}
+                        \item Limit cycle: $\upsilon_{n + 1} = \upsilon_n$
+                        \item Poincaré map: $\upsilon_{n + 1} = S(\upsilon)$
+                    \end{itemize}
+                \item Disturbance response % recovery process of the model after a disturbance: how fast the model returns to a limit cycle.
+                \item Mechanical cost analysis
+            \end{itemize}
+            Possible disturbances:
+            \begin{itemize}
+                \item Horizontal velocity $\dot{x}_0$ % (instantaneous speed increase/decrease of the \acrshort{com})
+                \item Floor height $\dot{y}_0$
+                \item Torso angular rate $\dot{\phi}_0$
+            \end{itemize}
+        \end{column}%
+        \begin{column}[T]{0.48\textwidth}%
+            \begin{figure}[htb]%
+                \centering%
+                \includestandalone{figures/disturbance-rejection/disturbance-rejection}%
+                \caption{Determination of the maximum allowable disturbance rejection. (Adapted from~\cite{Bommel2011}, p. 5)}%
+                \label{fig:disturbance-rejection}%
+            \end{figure}%
+        \end{column}%
+    \end{columns}%
+\end{frame}%
+%
+\note[itemize]{%
+    \item Disturbance rejection: maximum allowable perturbation of model
+    \item First, limit cycle, which model is in when initial states remain unchanged for consecutive strides, will get determined
+    \item Important role: Poincaré (Púokaré) map: Mapping between initial states of consecutive strides
+    \item Explain model
+    \item Other possible comparison criteria: Disturbance response: Recovery process of model after disturbance,  mechanical cost analysis
+    \item Possible disturbances: $x_0$, $y_0$, $\phi_0$: Introduced as single error on initial state of limit cycle
+}%
+%
+% (Bommel, 2011): The initial conditions define the set of state parameters for which the running model is in limit cycle, which means the runner is in a nominally periodic, stable sequence of hops. The initial state of a consecutive hop is determined by the end state of the previous hop. The mapping between the initial states of consecutive hops is called a Poincaré map.
+%
+% The model is in limit cycle when the initial states remain unchanged for consecutive hops
+%
+% limit cycle is found by minimising the difference between the initial state v0 and the state of the running model after one step v1
+%
+% Disturbances are introduced to the model as a single error on the initial state of the limit cycle.

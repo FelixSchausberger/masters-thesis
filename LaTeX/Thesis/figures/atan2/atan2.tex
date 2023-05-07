@@ -1,0 +1,44 @@
+% !TeX spellcheck = en_US
+\documentclass[]{standalone}%
+%
+% \input{../../../settings}%
+\usepackage{tikz}%
+\usetikzlibrary{positioning, decorations.text}%
+%
+\definecolor{TUMBlack}{cmyk}{0,0,0,1}%
+\definecolor{TUMBlue}{cmyk}{1,0.43,0,0}%           Pantone 300
+\definecolor{TUMBlue1}{cmyk}{1,0.57,0.12,0.7}%     Pantone 540
+\definecolor{TUMBlue2}{cmyk}{1,0.54,0.04,0.19}%    Pantone 301
+\definecolor{TUMBlue3}{cmyk}{0.65,0.19,0.01,0.04}% Pantone 542
+\definecolor{TUMBlue4}{cmyk}{0.42,0.09,0,0}%       Pantone 283
+\definecolor{TUMOrange}{cmyk}{0,0.65,0.95,0}%
+\definecolor{TUMGreen}{cmyk}{0.35,0,1,0.2}%
+%
+%
+\begin{document}%
+%
+\begin{tikzpicture}[scale = 1]% , even odd rule
+  %
+  \tikzstyle{background} = [thick, latex-latex, draw = TUMBlack]%
+  % \tikzstyle{dot} = [circle, minimum size = .42em, inner sep = 0em, fill = TUMBlack, draw = TUMBlack]%
+  %
+  \coordinate (origin) at (0, 0);%
+  \node [above = 8em of origin] (north) {};
+  \node [left = 8em of origin] (east) {};%
+  \node [below = 8em of origin] (south) {};%
+  \node [right = 8em of origin] (west) {};%
+  %
+  \draw [background] (east) -- (west) node [above] {x};%
+  \draw [background] (north) node [right] {y} -- (south);%
+  \node [above right = 0.2em and 5.75em of origin] () {0};%
+  \node [above right = 5.75em and 0.2em of origin] () {$\frac{\pi}{2}$};%
+  \node [above left = 0.2em and 5.75em of origin] () {$\pi$};%
+  \node [below left = 0.2em and 5.75em of origin] () {$-\pi$};%
+  \node [below left = 5.75em and 0.2em of origin] () {$-\frac{\pi}{2}$};%
+  %
+  \draw[thick, -latex] (-2, 0) arc (-180:180:2cm);
+  %
+\end{tikzpicture}%
+%
+\end{document}%
+%

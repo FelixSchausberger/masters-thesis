@@ -1,0 +1,75 @@
+% !TeX spellcheck = en_US
+\documentclass[]{standalone}%
+%
+% \input{../../../settings}%
+\usepackage{tikz}%
+\usetikzlibrary{arrows.meta, calc, positioning, decorations.text}%
+%
+\definecolor{TUMBlack}{cmyk}{0,0,0,1}%
+\definecolor{TUMBlue}{cmyk}{1,0.43,0,0}%           Pantone 300
+\definecolor{TUMBlue1}{cmyk}{1,0.57,0.12,0.7}%     Pantone 540
+\definecolor{TUMBlue2}{cmyk}{1,0.54,0.04,0.19}%    Pantone 301
+\definecolor{TUMBlue3}{cmyk}{0.65,0.19,0.01,0.04}% Pantone 542
+\definecolor{TUMBlue4}{cmyk}{0.42,0.09,0,0}%       Pantone 283
+\definecolor{TUMOrange}{cmyk}{0,0.65,0.95,0}%
+\definecolor{TUMGreen}{cmyk}{0.35,0,1,0.2}%
+%
+\usepackage[acronyms, sanitizesort]{glossaries-extra}
+\setabbreviationstyle[acronym]{long-short}
+\newcommand*{\LocalGlsBlue}[1]{\textcolor{TUMBlue}{\textbf{#1}}}%
+\newcommand*{\LocalGlsGreen}[1]{\textcolor{TUMGreen}{\textbf{#1}}}%
+\newcommand*{\LocalGlsBlueOrange}[1]{\textcolor{TUMBlue2!70!TUMOrange}{\textbf{#1}}}%
+\newenvironment*{LocalGlsTextBlue}{%
+  \let\oldglstextformat\glstextformat
+  \renewcommand\glstextformat[1]{\LocalGlsBlue{##1}}% Set local format
+}
+
+\newenvironment*{LocalGlsTextGreen}{%
+  \let\oldglstextformat\glstextformat
+  \renewcommand\glstextformat[1]{\LocalGlsGreen{##1}}% Set local format
+}
+
+\newenvironment*{LocalGlsTextBlueOrange}{%
+  \let\oldglstextformat\glstextformat
+  \renewcommand\glstextformat[1]{\LocalGlsBlueOrange{##1}}% Set local format
+}
+
+\loadglsentries{../../source/glossary.tex}% important update for glossaries, before document
+\loadglsentries[acronym]{../../source/acronyms}%
+%
+\begin{document}%
+%
+\begin{tikzpicture}[scale = 1]% , even odd rule
+  %
+  \tikzstyle{background} = [thick, latex-latex, draw = TUMBlack]%
+  \def\centerarc[#1](#2)(#3:#4:#5){% Syntax: [draw options] (center) (initial angle:final angle:radius)
+  \draw[#1] ($(#2)+({#5*cos(#3)},{#5*sin(#3)})$) arc (#3:#4:#5); 
+  }%
+  %
+  \coordinate (origin) at (0, 0);%
+  \node [above = 4em of origin] (north) {};
+  \node [left = 4em of origin] (east) {};%
+  \node [below = 8em of origin] (south) {};%
+  \node [right = 8em of origin] (west) {};%
+  %
+  \draw [background] (east) -- (west) node [above] {x};%
+  \draw [background] (north) node [right] {y} -- (south);%
+  %
+  \centerarc[arrows = {latex-latex}, draw = TUMBlue, ultra thick](0, 0)(20:-20:1.75);%
+  \node [above right = 0.75em and 3em of origin, TUMBlue] () {$+$};%
+  \node [below right = 0.75em and 3em of origin, TUMBlue] () {$-$};%
+  \begin{LocalGlsTextBlue}%
+    \node [below right = 1.5em and 5em of origin, TUMBlue] () {$\gls{rho}$};%
+  \end{LocalGlsTextBlue}%
+  %
+  \centerarc[arrows = {latex-latex}, draw = TUMGreen, ultra thick](0, 0)(250:290:1.75);%
+  \node [below left = 3em and 0.75em of origin, TUMGreen] () {$+$};%
+  \node [below right = 3em and 0.75em of origin, TUMGreen] () {$-$};%
+  \begin{LocalGlsTextGreen}%
+    \node [below right = 5em and 1.5em of origin, TUMGreen] () {\glsxtrshort{aea}};%
+  \end{LocalGlsTextGreen}%
+  %
+\end{tikzpicture}%
+%
+\end{document}%
+%

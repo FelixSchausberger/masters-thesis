@@ -1,0 +1,82 @@
+# Sources.md
+
+1. Google Scholar:
+
+- Keywords:
+  - Trunk stabilization robot
+  - JenaFox: (Behr, 2021)
+  - Virtual Pivot Point
+  - trunk pitch stabilization bipedal robot: (Drama, 2019, 2020), (Karagoz, 2022)
+- Reverse search:
+  - (Lee, 2011)
+  - (Lee, 2013)
+  - (Bommel, 2011)
+  - (Schroeder, 2018)
+
+- Mechanical Cost Analysis:
+  - (Lee, 2011) (Annotations)
+    - **(Biewener, 2018)**
+      - **(Donelan, 2022)**
+  - (Lee, 2013) (Annotations)
+  - **(Schroeder, 2018)**
+    - **(Kuo, 2005)**
+  - **(Lee, 2018)**
+  - **(Solis, 2020)**
+  - Froude number: **(Alexander, 1984)**
+  - **(Dewolf, 2017)**
+- H-SLIP:
+  - **(Che, 2013)**
+  - (Shen, 2012) (Annotations)
+    - **(Andrews, 2011)**
+    - **(Holmes, 2006)**
+    - Introduction: **(Rummel, 2008)**
+    - **(Seyfarth, 2002)**
+- Virtual Pivot Point:
+  - **(Maus, 2008)**
+  - **(Maus, 2010)**
+  - (Bommel, 2011) (Annotations)
+  - **(Firouzi, 2022)**
+  - **(Drama, 2019)**
+  - **(Drama, 2020)**
+  - **(Drama, 2021)**
+  - **(Karagoz, 2022)**
+- Intuitive Approach:
+  - (Raibert, 1986) (Annotations)
+- JenaFox:
+  - **(Renjewski, 2012)**
+  - **(Renjewski, 2013)**
+  - **(González, 2022a)**
+  - **(González, 2022b)**
+  - **(Behr, 2021a)**
+  - **(Behr, 2021b)**
+- Trajectory Optimization:
+  - **(Kelly, 2017)**
+- Fundamentals:
+  - **(Cavagna, 1977)**
+  - **(Hildebrand, 1965)**
+  - **(Hildebrand, 1968)**
+  - **(Blickhan, 1989)**
+  - **(D'Alembert, 1743)**
+  - **(Vernon, 2014)**
+  - **(Reynolds, 1987)**
+  - **(Sitti, 2013)**
+  - **(Siciliano, 2016)**
+  - **(McMahon, 1990)**
+  - **(Goswami, 1996)**
+  - **(Baker, 2007)**
+- Vertical Leg Orientation:
+  - **(Rummel, 2010)**
+- Bipedal Gaits:
+  - **(Carrier, 1984)**
+  - **(Full, 1991)**
+  - **(Irschick, 1999)**
+- Gait Analysis:
+  - **(Lee, 1998)**
+  - **(Griffin, 2004)**
+  - **(Genin, 2010)**
+  - **(Kajita, 1991)**
+  - **(Geyer, 2006)**
+  - **(Gallagher, 1996)**
+  - **(Lipfert, 2012)**
+  - **(Geng, 2006)**
+  - **(Grillner, 1975)**

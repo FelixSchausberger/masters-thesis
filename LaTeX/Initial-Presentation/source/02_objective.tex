@@ -1,0 +1,35 @@
+\begin{frame}{Objective of the Thesis}%
+    \begin{columns}[T,onlytextwidth]%
+        \begin{column}[T]{0.48\textwidth}%
+            \begin{enumerate}
+                \item Starting point:\\Stiff spring limits rotation of trunk
+                \item Approach:\\Gradually reduce spring while adjusting controller
+                \begin{itemize}
+                    % \item Intuitive~\cite{Raibert1986}
+                    \item \textbf{Collision based}~\cite{Lee2011}
+                    \item \acrshort{h-slip}~\cite{Shen2012}
+                    \item Virtual Pivot Point (VPP)~\cite{Maus2008}~\cite{Maus2010}
+                \end{itemize}
+                \item Objective:\\Free rotation without restrictions
+                % \item Note: Friction still simulated, but not as a spring
+            \end{enumerate}
+        \end{column}%
+        \begin{column}[T]{0.48\textwidth}%
+            \begin{figure}[htb]%
+                \centering%
+                \includestandalone{figures/objective/objective}%
+                \caption{Overview of the selected methods to achieve the goal from the current state of the project.}%
+                \label{fig:objective}%
+            \end{figure}%
+        \end{column}%
+    \end{columns}%
+\end{frame}%
+%
+\note[itemize]{% 
+    \item David Lee and others, premise: Discrete footfalls prevent consistent orthogonal relationship between force and velocity vectors, thus kinetic energy is lost as GRF performs mechanical work at \acrshort{com}
+    \item Extension of canonical \acrshort{slip} with constant hip torque and linear leg damping during stance called \acrfull{h-slip}
+    \item \acrshort{vpp}, a fixed point on the torso above the \acrshort{com}, where \acrshort{grf} are directed to via hip torque
+    \item Overall objective: Get rid of spring and enable a free rotation of the trunk without restrictions
+    \item Note: Friction still included, just not as spring
+}%
+%

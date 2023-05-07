@@ -1,0 +1,27 @@
+%
+% Tikz libraries
+\usepackage{standalone}%
+\usetikzlibrary{angles, arrows.meta, backgrounds, calc, decorations.pathmorphing, shapes.geometric, patterns, positioning, timeline, quotes}%
+%
+% Glossaries
+\usepackage[acronyms, toc]{glossaries}
+\makenoidxglossaries
+\loadglsentries{source/glossary.tex} % important update for glossaries, before document
+%
+% Set paths
+\graphicspath{{figures/}}%
+\addbibresource{source/literature.bib}%
+%
+% Set meta data
+% -------------
+\title[Comparison of Controllers for Trunk Stabilization in a Bipedal Robot]{Comparison of Controllers for Trunk Stabilization in a Bipedal Robot}%
+\def\PresentationType{\AMlangGerEng{Auftaktvortrag}{Initial Presentation}}%
+%\def\PresentationType{\AMlangGerEng{Abschlussvortrag}{Final Presentation}}%
+%\def\PresentationThesisType{\AMlangBachelorsThesis}%
+%\def\PresentationThesisType{\AMlangSemesterThesis}%
+\def\PresentationThesisType{\AMlangMastersThesis}%
+%\def\PresentationThesisType{\AMlangInterdisciplinaryProject}%
+\author[F. Schausberger]{Felix Schausberger}%
+\def\PresentationExaminer{\AMnamesProfRixen}%
+\def\PresentationSupervisor{Dr.-Ing. Daniel Renjewski}%
+\date{\AMutilsDate{11}{10}{2022}}%

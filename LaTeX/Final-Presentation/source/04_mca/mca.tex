@@ -1,0 +1,30 @@
+\begin{frame}{Mechanical Cost Analysis~\cite{Lee2011}}%
+    \begin{columns}[T,onlytextwidth]%
+        \begin{column}[T]{0.5\textwidth}%
+            \shorthandoff{"}% Needed for quotes
+            $~\gls{phi} = \gls{lambda} + \gls{theta} \neq 0$:
+            \begin{figure}[htb]%
+                \centering%
+                \includestandalone{mca/compliant-slip/compliant-slip}
+                % \caption{Compliant~\glsxtrshort{slip} (\ie$~\gls{phi} = \gls{lambda} + \gls{theta} \neq 0$ and$~\gls{kappa} = 1$)}
+            \end{figure}%
+        \end{column}%
+        \begin{column}[T]{0.5\textwidth}%
+            \shorthandoff{"}% Needed for quotes
+            $~\gls{phi} = \lvert\gls{lambda} - \gls{theta}\rvert = 0$:
+            \begin{figure}[htb]%
+                \centering%
+                \includestandalone{mca/zero-collision/zero-collision}
+                % \caption{Zero-collision (\ie$~\gls{phi} = \lvert\gls{lambda} - \gls{theta}\rvert = 0$ and$~\gls{kappa} = 0$)}
+            \end{figure}%
+        \end{column}%
+    \end{columns}%
+    \begin{align}
+        \gls{phi} = \textrm{arcsin}\left(\frac{\vert\glsxtrshort{grf} \cdot \gls{v}_{\glsxtrshort{com}}\vert}{\vert\glsxtrshort{grf}\vert~\vert\gls{v}_{\glsxtrshort{com}}\vert}\right) \notag
+    \end{align}
+    \begin{align}
+        \gls{lambda} = \textrm{arccos}\left(\frac{\vert\gls{v}_{\glsxtrshort{com}_x}\vert}{\vert\gls{v}_{\glsxtrshort{com}}\vert}\right),~
+        \gls{theta} = \textrm{arccos}\left(\frac{\vert\glsxtrshort{grf}_y\vert}{\vert\glsxtrshort{grf}\vert}\right) \notag
+    \end{align}
+\end{frame}%
+%

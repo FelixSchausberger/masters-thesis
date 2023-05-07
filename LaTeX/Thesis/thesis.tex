@@ -1,0 +1,62 @@
+% !TeX spellcheck = en_US
+\documentclass[AMstudentthesis%     style
+              ,optCharter%          font
+              %,optCMYK%            color model
+              ,optBiber% 	        bibliography tool
+              ,optEnglish% 		    language
+              %,optTikzExternalize% compiles faster for large tikz images
+              %,optExzellenz%
+              ,openany% Discard blank page after list of figures
+              ]{AMlatex}%
+%
+\input{settings}%
+%
+%
+\begin{document}%
+% Titlepage
+% ---------
+\input{source/cover}%
+\AtBeginShipoutNext{\AtBeginShipoutDiscard}% Discard next blank page
+\input{source/title}%
+%
+\frontmatter%
+%
+\input{source/disclaimer}%
+\input{source/acknowledgements}%
+%
+% Abstract
+% --------
+\include{source/abstract/abstract}%
+%
+% Content
+% -------
+\AMstudentthesisPrintTableOfContents%
+\listoffigures%
+\listoftables%
+% Insert blank page?
+\printnoidxglossaries
+% \afterpage{\blankpage}%
+%
+\mainmatter%
+\include{source/01_introduction/01_introduction}%
+\include{source/02_fundamentals/02_fundamentals}%
+\include{source/03_implementation/03_implementation}%
+\include{source/04_evaluation/04_evaluation}%
+\include{source/05_conclusion-and-future-work/05_conclusion-and-future-work}%
+%
+% Appendix
+% --------
+\appendix%
+\include{source/appendix/appendix}%
+%
+% References
+% ----------
+{%
+    %\sloppy% "Word"-like typesetting in order to improve breaking lines with long URLs/DOIs
+    \printbibliography[heading=bibintoc]%
+}%
+%
+%
+\end{document}%
+%
+%

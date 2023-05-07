@@ -1,0 +1,188 @@
+% !TeX spellcheck = en_US
+\section{Gait Analysis}
+% ~\glsxtrshort{slip} is suited for modelling running, where the energy oscillations are in phase,~\ie the kinetic and potential energy both reach a minimum at mid-stance, whereas~\glsxtrshort{ip} is convenient for walking, where the energy oscillations are out of phase.
+
+In order to be able to evaluate the performance of a given gait, different analysis techniques can be used. Gait analysis is the systematic study of walking patterns and movements, with the goal of understanding the mechanics of walking and, in the field of robotics, developing control algorithms to improve the robot's stability and balance. From a motor control perspective, bipedal gaits are thought to be controlled by a combination of reflexive and voluntary mechanisms, with the former providing stability and the latter allowing for intentional changes in gait patterns~\cite{Grillner1975}. A wide variety of models has been developed to analyze terrestrial legged locomotion, which can be classified based on the phase relationship of the kinetic and potential energy oscillations. Two of the most influential models for gait analysis for bipedal, quadrupedal, and multi-legged locomotion are the~\glsxtrfull{slip} and the~\glsxtrfull{ip} models.~\cite{Lee2018} Both methods model the subject as a point mass with oscillating massless legs, which allows the neglect of rotations around the~\glsxtrshort{com}~\cite{Kajita1991}. In bipedal gaits, the leading foot represents the braking force and serves as an anchor point for the body's next movement. Contrary to that, the trailing foot represents the propulsive force that adds energy to the system to vault over this same anchor point. In mid-stance, the~\glsxtrshort{com} reaches its lowest point when running,~\ie the minimum potential energy, and the provisional highest point when walking,~\ie the maximum potential energy. Since braking occurs in the first half of a leg's stance phase and propulsion in the second half, the~\glsxtrshort{com} velocity,~\ie the kinetic energy, reaches its minimum at mid-stance for both walking and running.~\cite{Lee2018} Figure~\ref{fig:grf} shows a schematic representation of the characteristic m-shape of the vertical~\glsxtrfull{grf} of a steady-state stance-phase pattern of a bipedal spring-mass model. The following sections give insight about the previously mentioned~\glsxtrshort{slip} and~\glsxtrshort{ip} models. Furthermore, the~\glsxtrfull{bslip} model, an alternative walking model for compliant legs, and the~\glsxtrfull{vpp}, a concept to analyze mechanical systems, are touched upon. At the beginning of this thesis, these methods were considered to be used, but as the work progressed, it quickly became apparent that the~\glsxtrshort{mca} would be pursued. 
+
+\begin{figure}[htb]%
+    \centering%
+    \includestandalone{grf/grf}
+    \caption{Schematic representation of the steady-state stance-phase pattern of a bipedal spring-mass model with its characteristic m-shape of the vertical~\glsxtrlong{grf} of the right (black) and left (gray) limb. The phase of the double support is shown in blue. One stride period is defined from mid-stance of the left limb to the subsequent mid-stance of the left limb. (Adapted from~\cite{Lee2018}, p. 5)}
+    \label{fig:grf}%
+\end{figure}%
+% \noindent
+
+    \subsection{Spring-Loaded Inverted Pendulum}
+
+    The~\glsxtrshort{slip} model represents a spring-mass system, where a pendulum represents the body of a walker mounted on a spring and supported by the~\glsxtrshort{grf}. The pendulum,~\ie the~\glsxtrshort{com} of the body, is assumed as a point mass, and the massless spring serves as the ankle joint and its associated muscles and tendons in the legs. The model treats the phase of the stride in which the~\glsxtrshort{com} is vaulting over the stance foot as an inverted pendulum with springs added inline to the legs. Since the springs are able to store energy during collision with the ground (\ie during heel strike) and return it to the~\glsxtrshort{com} during toe off, this model is typically found in running gaits.~\cite{Blickhan1989} \Glsxtrshort{slip}-like gaits include bipedal running and hopping, as well as quadrupedal and multi-legged trotting, often described as "bouncing" gaits as the greatest leg compression occurs at about the same time as the greatest vertical force~\cite{McMahon1990}. This spring-based gait can also be seen in animals that frequently hop, such as kangaroos. When physical springs are present, energy savings can be achieved via elastic storage and proportional return of absorbing and generative work performed by muscles or actuators. Overall, the~\glsxtrshort{slip} model is a simple, yet quantitative way to represent the dynamics involved in walking and running and to analyze the energy economy describing the mechanical work done by the muscles and tendons.~\cite{Blickhan1989}
+
+    \subsection{Inverted Pendulum}
+
+    % In contrast to SLIP-like gaits, potential energy tends to reach a maximum near mid-stance during walking - making kinetic and potential energies more-or-less out of phase. Ac- cording to the conventional interpretation of "two basic mechanisms", this is sufficient to invoke a RIP model of walking dynamics. Nonetheless, experimental studies show that bipedal and quadrupedal walking dynamics (\eg, Lee and Farley, 1998; Griffin et al., 2004, Genin et al., 2009) do not match the RIP model. This is unsurprising given that an actual rigid inverted pendulum (\ie, a mass on a massless rod of fixed length) would show a peak vertical force instead of a minimum vertical force in the mid-stance position, as described by Geyer, Seyfarth, and Blickhan (2006)~\cite{Geyer2006}.
+
+    In the~\glsxtrshort{ip} model the body of the walker is represented as a rigid rod that is inverted and balanced on a pivot point. The rod represents the body's~\glsxtrshort{com}, and the pivot point represents the ankle joint. The body is subjected to gravitational forces that cause it to oscillate back and forth as it moves forward. According to the conventional interpretation of "two basic mechanisms", which states that the potential energy tends to reach a maximum near mid-stance during walking, it is sufficient to describe walking dynamics with an~\glsxtrshort{ip} model derived using Lagrangian mechanics and non-linear equations of motion. The system is considered to be under-actuated because the control inputs are limited to the forces and torques at the ankle and knee joints.~\cite{Lee2018} Nonetheless, experimental studies show that bipedal and quadrupedal walking dynamics (\eg~\cite{Lee1998},~\cite{Griffin2004},~\cite{Genin2010}) are not well reflected by the~\glsxtrshort{ip} model. This is unsurprising given that an actual rigid inverted pendulum (\ie, a mass on a massless rod of fixed length) would show a peak vertical force instead of a minimum vertical force in the mid-stance position, as described by~\citeauthor{Geyer2006}~\cite{Geyer2006}. The authors presented an alternative walking model for compliant legs, called the~\glsxtrlong{bslip} model, which is described in more detail in the following section.
+
+    \subsection{Bipedal Spring-Loaded Inverted Pendulum}
+
+    The~\glsxtrshort{bslip} model, proposed by~\citeauthor{Geyer2006}, is a variation of the~\glsxtrshort{slip} model specifically designed to study bipedal walking gaits. The model is able to reproduce a similar m-shape of the vertical~\glsxtrshort{grf} as shown in figure~\ref{fig:grf} by providing a spring-loaded leg that introduces compliance. In addition, the model aggregates the leading and trailing leg forces during double support of the step-to-step transition. Although the~\glsxtrshort{bslip} model is widely used and frequently cited, it has not yet challenged the~\glsxtrshort{ip} model in most textbooks. This may be in part because the~\glsxtrshort{bslip} is more difficult to simulate and perhaps also because its conservative leg springs limit its ability to achieve the full range of human walking speeds.~\cite{Lipfert2012} Nevertheless,~\glsxtrshort{slip}-like running and~\glsxtrshort{bslip}-like walking were successfully demonstrated on a bipedal robot using the same spring-loaded legs for both gaits~\cite{Hubicki2018}. Theoretically, the~\glsxtrshort{bslip} represents a more lifelike model because, unlike the rather unrealistic impulsive stride-to-stride transition of the~\glsxtrshort{ip} model, it is able to capture the characteristic m-shape of the~\glsxtrshort{grf} profile and, moreover, allows for double support~\cite{Lee2018}.
+
+    \subsection{Virtual Pivot Point}
+
+    The~\glsxtrshort{vpp} is a concept used to analyze mechanical systems with multiple~\glsxtrfull{dof}. The~\glsxtrshort{vpp} depicts a hypothetical point in a mechanical system that behaves as if it is a fixed pivot point, even though it is not actually fixed. This point can then be used as a reference point for analyzing the motion of other parts of the system. The position of the~\glsxtrshort{vpp} is typically chosen based on the geometry and dynamics of the system.~\cite{Maus2010} For the analysis of bipedal gaits, the~\glsxtrshort{vpp} can be chosen as a fixed point on the torso above the~\glsxtrshort{com}, where the~\glsxtrshort{grf} is directed to via a hip torque, which allows to take the position of the leg into account.~\cite{Bommel2011} If the~\glsxtrshort{vpp} is aligned with the leg, no torso torque is applied and the resulting~\glsxtrshort{grf} is directed at the hip joint, as shown in figure~\ref{fig:no-torso-torque}. However, if the torso is tilted backwards, a negative torso torque must be applied to align the~\glsxtrshort{grf} with the~\glsxtrshort{vpp}, as can be seen in figure~\ref{fig:negative-torso-torque}.~\cite{Maus2010} When the~\glsxtrshort{grf} always directs at the~\glsxtrshort{vpp} it becomes a virtual hinge around which the torso will rotate, which transforms the difficult task of balancing an inverted pendulum to a system consisting of a pendulum suspended from a hinge, which is intrinsically stable.~\cite{Bommel2011}
+    
+    \begin{figure}[htb]%
+        \centering%
+        \begin{subfigure}{0.5\linewidth}%
+            \centering%
+            \includestandalone{virtual-pivot-point/no-torso-torque/no-torso-torque}%
+            \caption{No torso torque}
+            \label{fig:no-torso-torque}
+        \end{subfigure}%
+        %
+        \hfil%
+        %
+        \begin{subfigure}{0.5\linewidth}%
+            \centering%
+            \includestandalone{virtual-pivot-point/negative-torso-torque/negative-torso-torque}%
+            \caption{Negative torso torque}
+            \label{fig:negative-torso-torque}
+        \end{subfigure}%
+        %
+        \caption{Schematic representation of the~\glsxtrfull{vpp}, a fixed point on the torso above the~\glsxtrlong{com}, where the~\glsxtrfull{grf} is directed to via a hip torque. If the~\glsxtrshort{vpp} is aligned with the leg, no torso torque is applied and the resulting~\glsxtrshort{grf} is directed at the hip joint (\subref{fig:no-torso-torque}). If the torso is tilted backwards, a negative torso torque ($\gls{M}_{torso}$) must be applied to align the~\glsxtrshort{grf} with the~\glsxtrshort{vpp} (\subref{fig:negative-torso-torque}). (Adapted from~\cite{Maus2010}, p. 3)}%
+        \label{fig:virtual-pivot-point}%
+    \end{figure}%
+    % \noindent
+
+    \subsection{Mechanical Cost Analysis}
+    % Collision Based Approach / Orthogonal Constraint Method
+
+    The~\glsxtrshort{mca} is a method used to quantify the energy consumption and efficiency of movement patterns in biological and artificial systems. The goal of this analysis is to quantify the amount of energy required to perform a given task, such as walking or running, and to understand how different factors, such as speed, terrain, and body size, influence the energy cost. It involves calculating and comparing the mechanical work done by the system,~\ie the force applied to and the displacement of the system, as well as the metabolic energy consumption, to quantify the overall efficiency of the movement.~\Glsxtrshort{mca} is widely used in fields such as biomechanics, sports science, and robotics where it is important to understand the energy consumption and efficiency of movement patterns. In biomechanics,~\glsxtrshort{mca} can be used to study the energy consumption of different walking styles, while in robotics it can be used to optimize the energy efficiency of movements. The~\glsxtrshort{mcot} can be decomposed into several components, including the work done against gravitational forces, work done against inertial forces, work done against frictional forces, and work done to change the velocity of the body segments. These components can be calculated using principles from mechanics, such as work-energy, impulse-momentum, and conservation of energy. The~\glsxtrshort{mcot} can also be influenced by various factors, such as body size and shape, limb coordination, and actuator activation patterns. For example, taller agents generally have a higher~\glsxtrshort{mcot} than shorter individuals just because they have to overcome larger gravitational forces.~\cite{Biewener2018}\\
+
+    Based on this~\citeauthor*{Lee2011}~\cite{Lee2011} developed a collision-based approach, which uses the same point mass model as~\glsxtrshort{slip}-based methods, but describes the locomotion directly by analyzing the force and velocity vectors. Unlike~\glsxtrshort{slip}-based approaches, which are only approximations of a gait, the collision-based approach has the advantage that no~\textit{a priori} model needs to be known, which holds the potential to distinguish different gaits as well as to discern their defined characteristics~\cite{Lee2011}. % (Solis, 2020)
+    
+        \subsubsection{Fundamental Determinants of Center of Mass Dynamics}    
+        % ~\cite{Alembert1743}
+
+        The central concept of~\glsxtrshort{mca} is D'Alembert's 'principle of orthogonal constraint', which shows that a mass can be redirected without mechanical work, as long as the constraint (\ie the force vector) is perpendicular to the path (\ie the velocity vector), such that their dot-product (\ie the mechanical power) is zero. However, this theoretical redirection with zero work cannot be implemented in real legged systems as terrestrial legged locomotion requires intermittent, discrete footfalls. Among other things, this constrains the system's ability to exert orthogonal forces by a leg's position with respect to the~\glsxtrshort{com}, their kinematic range of motion and their force-torque capacity.~\cite{Lee2018} These "inelastic" collisions~\cite{Kuo2005} by the limb with the ground preclude a consistent orthogonal relationship between the force and velocity vector, as their corresponding instantaneous angles~\gls{theta} (relative to vertical) and$~\gls{lambda}$ (relative to horizontal)~\cite{Lee2013} are of the same sign\footnote{This is consistent with compliant~\glsxtrshort{slip} mechanics~\cite{Lee2013}.}, as shown in Figure~\ref{fig:compliant-slip}. This results in a non-zero collision angle~\gls{phi} and abrupt, collision-like changes in the~\glsxtrshort{com} direction, which require mechanical work~\cite{Lee2011}. However, in the theoretical case, if the two vectors are perpendicular to each other,~\gls{phi} = 0, meaning the angles~\gls{theta} and$~\gls{lambda}$ are equal and of opposite sign, which in turn means that no collision occurs, and no work is done at the~\glsxtrshort{com}, as for a wheel without rim but infinite spokes~\cite{Biewener2018}. A schematic representation of this concept is shown in figure~\ref{fig:zero-collision}. 
+        
+        \shorthandoff{"}% Needed for quotes
+        \begin{figure}[H]%
+            \centering%
+            \begin{subfigure}{0.5\linewidth}%
+                \centering%
+                \includestandalone{mca/compliant-slip/compliant-slip}
+                \caption{Compliant~\glsxtrshort{slip} (\ie$~\gls{phi} = \gls{lambda} + \gls{theta} \neq 0$ and$~\gls{kappa} = 1$)}
+                \label{fig:compliant-slip}
+            \end{subfigure}%
+            %
+            \hfil%
+            %
+            \begin{subfigure}{0.5\linewidth}%
+                \centering%
+                \includestandalone{mca/zero-collision/zero-collision}
+                \caption{Zero-collision (\ie$~\gls{phi} = \lvert\gls{lambda} - \gls{theta}\rvert = 0$ and$~\gls{kappa} = 0$)}
+                \label{fig:zero-collision}
+            \end{subfigure}%
+            %
+            \caption{Schematic representation of the~\glsxtrlong{mca} for a compliant~\glsxtrlong{slip} (\subref{fig:compliant-slip}) as well as the idealized zero-collision case (\subref{fig:zero-collision}). Shown are the~\glsxtrfull{grf} and velocity vector$~\gls{v}_{\glsxtrshort{com}}$ with their corresponding angles,~\gls{theta} and$~\gls{lambda}$ of two isolated, hypothetical strides. The collision angle~\gls{phi} is the deviation of the orthogonal relation between the~\glsxtrshort{grf} and$~\gls{v}_{\glsxtrshort{com}}$. The collision reduction is quantified by the
+            collision fraction~\gls{kappa}. Note that angles and collision fractions are illustrated at specific instances. (Adapted from~\cite{Lee2011}, p. 4)}%
+            \label{fig:mca}%
+        \end{figure}%
+        % \noindent
+        
+        To enforce the principle of orthogonal constraint, that is, to keep the force and velocity vectors of the~\glsxtrshort{com} as orthogonal as possible, both metrics must be measured at each instant of the stride. If this orthogonal relationship is violated, either generative or absorptive costs are incurred, depending on the sign of the collision angle~\gls{phi}, which is the summation of the force and velocity angles~\gls{theta} and$~\gls{lambda}$. If$~\gls{phi} < 90\,\textrm{\si{\degree}}$, the cost is generative, \ie, the two vectors point somewhat in the same direction and energy can be applied to move forward. Conversely, if$~\gls{phi} > 90\,\textrm{\si{\degree}}$, the cost and energy are absorptive, as is the case with deceleration. Theoretically, provided both vectors are always exactly $90\,\textrm{\si{\degree}}$ out of phase, it would hereby be possible to redirect the~\glsxtrshort{com} with zero work.~\cite{Lee2018} The power of the limb acting on the~\glsxtrshort{com} of the body, \ie the external mechanical power, can thus be quantified as % (Solis, 2020)
+        
+        \begin{align}
+            \gls{P-mech} = \glsxtrshort{grf}~\gls{v}_{\glsxtrshort{com}}~\textrm{sin}(\gls{phi})
+            \label{eq:mechanical-power}
+        \end{align}
+        % \noindent
+        
+        where~\glsxtrshort{grf} denotes the respective force vector, \ie the external force acting on the limb, and$~\gls{v}_{\glsxtrshort{com}}$ the velocity vector of the~\glsxtrshort{com}. The mechanical work performed corresponds to the cumulative time integral over the duration of the impulse of the external mechanical power~\cite{Donelan2002}~\cite{Lee2011}:
+        
+        \begin{align}
+            \gls{W-mech} = \int \gls{P-mech}~dt.
+            \label{eq:mechanical-work}
+        \end{align}
+        
+            \subsubsection{Center of Mass Velocities}
+            
+            A common dimensionless unit for comparing moving objects is the Froude number (\gls{Fr}). It can be used to classify walking gaits into different categories based on the relative importance of inertial and gravitational forces in the motion of the body. For example, when ~$\gls{Fr} < 1$, the walking gait is characterized by stability-seeking behavior, while when~$\gls{Fr} > 1$, the walking gait is characterized by energy-saving behavior. The dimensionless velocity is the square-root of the Froude number~\cite{Alexander1984}~\cite{Lee2011}
+
+            \begin{align}
+                \sqrt{\gls{Fr}} = \sqrt{\frac{\overline{\gls{v}_{\glsxtrshort{com}_x}}^2}{\gls{g}~\gls{y}_{\glsxtrshort{com}}}} = \frac{\overline{\gls{v}_{\glsxtrshort{com}_x}}}{\sqrt{\gls{g}~\gls{y}_{\glsxtrshort{com}}}}
+                \label{eq:dimensionless-velocity}
+            \end{align}
+            % \noindent
+            
+            where $\overline{\gls{v}_{\glsxtrshort{com}_x}}$ depicts the average forward velocity,~\gls{g} the acceleration due to gravity and$~\gls{y}_{\glsxtrshort{com}}$ the vertical displacement of the~\glsxtrshort{com} of the body.\\
+            
+            \subsubsection{Collision-Based Angles}
+            
+            The instantaneous collision angle~\gls{phi} is the deviation of perpendicularity of force and velocity vectors of the~\glsxtrshort{com}~\cite{Lee2011}, which is measured at each instance of the step and given by the dot product of force on velocity
+            
+            \begin{align}
+                \gls{phi} = \textrm{arcsin}\left(\frac{\vert\glsxtrshort{grf} \cdot \gls{v}_{\glsxtrshort{com}}\vert}{\vert\glsxtrshort{grf}\vert~\vert\gls{v}_{\glsxtrshort{com}}\vert}\right).
+                \label{eq:phi}
+            \end{align}
+            % \noindent
+
+            The $\textrm{arcsine}$ represents a phase shift of $\frac{\pi}{2}$ to define an angle of zero when the force and velocity vectors are perpendicular to each other. Note that~\gls{phi} is undefined during flight periods,~\ie when~\glsxtrshort{grf} = 0. The instantaneous velocity angle with respect to the horizontal~\gls{lambda} and the instantaneous force angle with respect to the vertical~\gls{theta}~\cite{Lee2011} are given by
+
+            \begin{align}
+                \gls{lambda} = \textrm{arccos}\left(\frac{\vert\gls{v}_{\glsxtrshort{com}_x}\vert}{\vert\gls{v}_{\glsxtrshort{com}}\vert}\right)
+                \label{eq:lambda}
+            \end{align}
+            % \noindent
+
+            \begin{align}
+                \gls{theta} = \textrm{arccos}\left(\frac{\vert\glsxtrshort{grf}_y\vert}{\vert\glsxtrshort{grf}\vert}\right).
+                \label{eq:theta}
+            \end{align}
+            % \noindent
+            
+            The collision angle over the contact periods of the entire stride~\gls{Phi} is given by the weighted average of~\gls{phi}, where the weights represent the magnitude of the force and velocity vectors at each instant~\cite{Lee2011}:
+            
+            \begin{align}
+                \gls{Phi} = \frac{\sum\vert\glsxtrshort{grf}\vert~\vert\gls{v}_{\glsxtrshort{com}}\vert~\gls{phi}}{\sum\vert\glsxtrshort{grf}\vert~\vert\gls{v}_{\glsxtrshort{com}}\vert}.
+                \label{eq:Phi}
+            \end{align}
+            % \noindent
+
+            Similarly, the stride velocity angle with respect to the horizontal~\gls{Lambda} and the stride force angle with respect to the vertical~\gls{Theta} can be determined from instantaneous velocity and force angles,~\gls{lambda} and~\gls{theta}, respectively~\cite{Lee2011}:
+
+            \begin{align}
+                \gls{Lambda} = \frac{\sum\vert\gls{v}_{\glsxtrshort{com}}\vert~\gls{lambda}}{\sum\vert\gls{v}_{\glsxtrshort{com}}\vert}
+                \label{eq:Lambda}
+            \end{align}
+            % \noindent
+
+            \begin{align}
+                \gls{Theta} = \frac{\sum\vert\glsxtrshort{grf}\vert~\gls{theta}}{\sum\vert\glsxtrshort{grf}\vert}.
+                \label{eq:Theta}
+            \end{align}
+            % \noindent
+            
+            Applying the small angle approximation of equation~\ref{eq:phi} in equation~\ref{eq:Phi}, that is, when only small vertical undulations and fore-aft forces appear, shows that the collision angle~\gls{Phi} is a close approximation to the~\glsxtrshort{mcot}~\cite{Lee2011} if$~\textrm{sin}(\gls{phi}) \approxeq \gls{phi}$ (\ie if~\gls{phi} is less than about $0.3\,\textrm{\si{\radian}}$), as can be seen in
+
+            \begin{align}
+                \gls{Phi} \approxeq \frac{\sum\vert\glsxtrshort{grf} \cdot \gls{v}_{\glsxtrshort{com}}\vert}{\sum\vert\glsxtrshort{grf}\vert~\vert\gls{v}_{\glsxtrshort{com}}\vert} \approxeq \text{\glsxtrshort{mcot}} = \frac{\sum\vert\glsxtrshort{grf} \cdot \gls{v}_{\glsxtrshort{com}}\vert}{\overline{\gls{v}_{\glsxtrshort{com}_x}}~\gls{m}~\gls{g}}
+                \label{eq:mcot}
+            \end{align}
+            % \noindent
+            % \gls{n} and~\gls{n} is the number of samples in the stride period.
+
+            where the~\glsxtrshort{mcot} is a dimensionless metric of the normalized mechanical power during the contact period of the gait when the limb redirects the~\glsxtrshort{com}~\cite{Lee2013}, \ie the mechanical work at the~\glsxtrshort{com} required to move a unit body weight a unit distance in the direction of travel~\cite{Lee2011}~\cite{Cavagna1977}.
+            
+            \subsubsection{Collision Fraction}
+            
+            The collision reduction is directly correlated to the collision angle~\gls{Phi} and quantified by the collision fraction~\gls{kappa}, which gets small if either the velocity angle$~\gls{Lambda}$\footnote{Which tends to be greater in \glsxtrshort{slip}-like gaits such as running, hopping or trotting due to increased vertical oscillations of the \glsxtrshort{com} during these "bouncing" gaits~\cite{Lee2013}.} or the force angle~\gls{Theta} is small, if there is a near perpendicularity of the velocity vector$~\gls{v}_{\glsxtrshort{com}}$ and the~\glsxtrshort{grf} throughout the stride or any combination thereof. The collision fraction is the actual collision relative to potential collision:
+            
+            \begin{align}
+                \gls{kappa} = \frac{\sum\vert\glsxtrshort{grf}\vert~\vert\gls{v}_{\glsxtrshort{com}}\vert~(\gls{phi} / (\gls{theta} + \gls{lambda}))}{\sum\vert\glsxtrshort{grf}\vert~\vert\gls{v}_{\glsxtrshort{com}}\vert} = \frac{\gls{Phi}}{\gls{Theta} + \gls{Lambda}}.
+                \label{eq:collision-fraction}
+            \end{align}
+            % \noindent
+            
+            For the compliant~\glsxtrshort{slip},$~\gls{phi} = \gls{lambda} + \gls{theta} \neq 0$ and $\gls{kappa} = 1$, since the braking force yields a non-perpendicular angle with downward velocity whereas the propulsive force yields one with upward velocity (see figure~\ref{fig:compliant-slip}), which occurs whenever the~\glsxtrshort{grf} and$~\gls{v}_{\glsxtrshort{com}}$ are oriented in opposite directions from the vertical and horizontal axes. Whenever the~\glsxtrshort{grf} and$~\gls{v}_{\glsxtrshort{com}}$ are oriented in the same direction, collisions are reduced and~$\gls{kappa} < 1$ up to the idealized case in which the~\glsxtrshort{grf} and$~\gls{v}_{\glsxtrshort{com}}$ remain orthogonal throughout the entire stride and thus~$\gls{phi} = \lvert\gls{lambda} - \gls{theta}\rvert = 0$ and $\gls{kappa} = 0$, as shown in figure~\ref{fig:zero-collision}. Note that for a geometrical representation angles and collision fractions are illustrated at specific instances.~\cite{Lee2011}
+            

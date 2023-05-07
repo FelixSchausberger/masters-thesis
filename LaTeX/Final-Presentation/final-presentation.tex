@@ -1,0 +1,60 @@
+% !TeX spellcheck = en_US
+\documentclass[AMbeamer%               style
+               ,optEnglish%            language
+               %,handout%               deactivate animation
+               ,optBibtex%              bibliography tool
+               %,optBiber%               bibliography tool
+               ,optBibstyleAlphabetic%
+               ,optBeamerClassicFormat% 4:3 format
+               %,optBeamerWideFormat%   16:9 format
+               %,optExzellenz%
+               ]{AMlatex}%
+% \setbeameroption{show notes on second screen}% show notes}% Show all notes
+%
+\input{settings}%
+%
+% Setup of header and footer
+\AMbeamerSetupHeader{\AMlayoutHeaderCustomChair}%
+\AMbeamerSetupFooterCD%
+%
+\begin{document}%
+%
+% Start with titlepage
+\AMbeamerTitlePageStudentThesis%
+%
+%
+\include{source/01_problem-description/problem-description}%
+\include{source/02_trajectory-optimization/trajectory-optimization}%
+\include{source/03_gait/gait}%
+\include{source/04_mca/mca}%
+\include{source/05_collision-fraction/collision-fraction}%
+\include{source/06_com-horizontal-velocity/com-horizontal-velocity}%
+\include{source/07_displacement/displacement}%
+\include{source/08_phi-hip-torso/phi-hip-torso}%
+\include{source/09_phase-plot/phase-plot}%
+\include{source/10_phase-plot/phase-plot}%
+\include{source/11_summary/summary}%
+
+%
+% End with titlepage
+\AMbeamerTitlePageStudentThesis%
+%
+% Appendix
+% \include{source/}%
+\include{source/appendix/control-parameters}%
+\include{source/appendix/results-sweep}%
+\include{source/appendix/results}%
+\include{source/appendix/velocity-vectors}%
+%
+% References
+\include{source/references}%
+%
+% Glossary
+\AMbeamerSetFooterText{Glossary}%
+\begin{frame}[allowframebreaks]{Glossary}%
+    \printnoidxglossaries%
+\end{frame}%
+%
+\end{document}%
+%
+%

@@ -1,0 +1,64 @@
+% !TeX spellcheck = en_US
+\documentclass[]{standalone}%
+%
+% \input{../../../settings}%
+\usepackage{tikz}%
+\usetikzlibrary{3d}%
+%
+\definecolor{TUMBlack}{cmyk}{0,0,0,1}%
+\definecolor{TUMBlue}{cmyk}{1,0.43,0,0}%           Pantone 300
+\definecolor{TUMBlue1}{cmyk}{1,0.57,0.12,0.7}%     Pantone 540
+\definecolor{TUMBlue2}{cmyk}{1,0.54,0.04,0.19}%    Pantone 301
+\definecolor{TUMBlue3}{cmyk}{0.65,0.19,0.01,0.04}% Pantone 542
+\definecolor{TUMBlue4}{cmyk}{0.42,0.09,0,0}%       Pantone 283
+\definecolor{TUMOrange}{cmyk}{0,0.65,0.95,0}%
+\definecolor{TUMGreen}{cmyk}{0.35,0,1,0.2}%
+%
+%
+\begin{document}%
+%
+\newcommand{\xangle}{-15}
+\newcommand{\yangle}{90}
+\newcommand{\zangle}{10}
+
+\newcommand{\xlength}{1}
+\newcommand{\ylength}{.5}
+\newcommand{\zlength}{1}
+
+\pgfmathsetmacro{\xx}{\xlength*cos(\xangle)}
+\pgfmathsetmacro{\xy}{\xlength*sin(\xangle)}
+\pgfmathsetmacro{\yx}{\ylength*cos(\yangle)}
+\pgfmathsetmacro{\yy}{\ylength*sin(\yangle)}
+\pgfmathsetmacro{\zx}{\zlength*cos(\zangle)}
+\pgfmathsetmacro{\zy}{\zlength*sin(\zangle)}
+%
+\begin{tikzpicture}[scale = 1.5, x={(\xx cm,\xy cm)}, y={(\yx cm,\yy cm)}, z={(\zx cm,\zy cm)}]
+    %
+    \tikzstyle{arrow} = [->, -latex, ultra thick, draw = TUMBlack]%
+    %
+    \begin{scope}[canvas is zy plane at x = 0]
+        \draw [arrow, draw = TUMGreen, text = TUMGreen] (0, 0.1) -- (0, 4) node [at end, left] {Y};
+        % \node at (.9, .6) [text = TUMGreen, transform shape] {frontal};
+    \end{scope}
+    
+    \begin{scope}[canvas is zx plane at y = 0]
+        \draw [arrow, draw = TUMBlue, text = TUMBlue] (-0.1, 0) -- (-2, 0) node [at end, left] {Z};
+        % \node at (1.2, 1.2) [text = TUMBlue, xscale = -1, rotate = 90, transform shape] {transversal};
+    \end{scope} % , scale = .9
+    
+    \begin{scope}[canvas is xy plane at z = 0]
+        \draw [arrow, draw = TUMOrange, text = TUMOrange] (0.1, 0) -- (2, 0) node [at end, right] {X};
+        % \node at (1.5, .6) [text = TUMOrange, transform shape] {sagittal};
+    \end{scope}
+    %
+    % Axes
+    % \begin{scope}
+        % \draw [arrow, draw = TUMOrange, text = TUMOrange] (0.1, 0, 0) -- (2, 0, 0) node [at end, right] {X};
+        % \draw [arrow, draw = TUMGreen, text = TUMGreen] (0, 0.1, 0) -- (0, 4, 0) node [at end, left] {Y};
+        % \draw [arrow, draw = TUMBlue, text = TUMBlue] (0, 0, 0.1) -- (0, 0, 2) node [at end, above] {Z};
+    % \end{scope}
+    %
+\end{tikzpicture}%
+%
+\end{document}%
+%

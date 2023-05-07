@@ -1,0 +1,52 @@
+% !TeX spellcheck = en_US
+\documentclass[AMbeamer%               style
+               ,optEnglish%            language
+               %,handout%               deactivate animation
+               ,optBibtex%              bibliography tool
+               %,optBiber%               bibliography tool
+               ,optBibstyleAlphabetic%
+               ,optBeamerClassicFormat% 4:3 format
+               %,optBeamerWideFormat%   16:9 format
+               %,optExzellenz%
+               ]{AMlatex}%
+\setbeameroption{show notes on second screen}% show notes}% Show all notes
+%
+\input{settings}%
+%
+% Setup of header and footer
+\AMbeamerSetupHeader{\AMlayoutHeaderCustomChair}%
+\AMbeamerSetupFooterCD%
+%
+\begin{document}%
+%
+% Start with titlepage
+\AMbeamerTitlePageStudentThesis%
+%
+%
+\include{source/01_problem-description}%
+\include{source/02_objective}%
+\include{source/03_comparison-criteria}%
+\include{source/04_work-plan}%
+\include{source/05_schedule}%
+\include{source/06_summary}%
+%
+% End with titlepage
+\AMbeamerTitlePageStudentThesis%
+%
+% Appendix
+\include{source/07_collision-based-approach}%
+\include{source/08_h-slip}%
+\include{source/09_virtual-pivot-point}%
+%
+% References
+\include{source/references}%
+%
+% Glossary
+\AMbeamerSetFooterText{Glossary}%
+\begin{frame}[allowframebreaks]{Glossary}%
+    \printnoidxglossaries%
+\end{frame}%
+%
+\end{document}%
+%
+%

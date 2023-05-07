@@ -1,0 +1,54 @@
+% !TeX spellcheck = en_US
+\section{The JenaFox Bipedal Walking Robot}
+\label{sec:jenafox}
+
+    JenaFox refers to a bipedal robot developed at the Friedrich-Schiller-University Jena in Germany, designed for research in robotics and control engineering with a focus on bipedal locomotion. The robot resembles two human-like legs, connected by a torso, that are capable of walking and navigating different terrains. The system is equipped with a variety of sensors, such as accelerometers and gyroscopes, which provide data on its motion and orientation. This data can then be used to control the robot's actuators and thus its movements, allowing it to balance, walk, and respond to its environment in real-time. The robot is also designed to be highly scalable and modular, with a wide range of interchangeable components that can be customized to meet specific research needs. This includes the ability to easily swap out different sensors, actuators, and control boards, allowing researchers to easily experiment with different configurations and components.~\cite{Renjewski2012}\\
+
+    The robotic test environment is unique in that it is designed as an open-source platform, making it accessible to researchers and students who want to study and experiment with bipedal robotics. Overall, JenaFox is a valuable tool for researchers and students in the field of robotics and control engineering, as it provides a platform for exploring the challenges and opportunities associated with bipedal locomotion, and for developing new technologies and control strategies for robots.~\cite{Renjewski2012}\\
+
+    A schematic representation of the JenaFox robot is shown in figure~\ref{fig:jenafox-wireframe}. The bipedal robot consists of a torso connected to two segmented legs, each of which has an upper and a lower link. When taking a step, the stance leg supports the weight of the robot, while the swing leg is free to move above the ground. All limbs are connected via actuators, with sensors in each joint measuring angular position and velocity, except for the ankle joint, which is the only passive joint of the system. The trunk of the robot is attached to a boom via a freely rotating joint. The tether mechanism constrains the motion of the robot on a sphere, without excessively affecting its dynamics in the sagittal plane (\ie the plane spanned between the abscissa axis (X-axis, orange) and ordinate axis (Y-axis, green), see figure~\ref{fig:coordinate-system}). The mechanism consists of an aluminum tube, a spherical pivot fixed to the floor and a tension cable. The tether is instrumented to provide measurements of the machine's three motions: vertical translation, forward translation, and rotation about the axis of the boom.~\cite{Renjewski2012}~\cite{Renjewski2013}
+
+    \begin{figure}[htb]%
+        \centering%
+        \begin{subfigure}{0.5\linewidth}%
+            \centering%
+            \includegraphics[width=0.8\linewidth]{jenafox/jenafox-wireframe-transparent-black-thick.png}
+            \caption{Schematic representation of the JenaFox robot. (Adapted from~\cite{Jenafox:Wireframe})}%
+            \label{fig:jenafox-wireframe}%
+            %
+        \end{subfigure}%
+        %
+        \hfil%
+        %
+        \begin{subfigure}{0.5\linewidth}%
+            \centering%
+            \includestandalone{coordinate-system/coordinate-system}%
+            \caption{Deﬁnition of the associated coordinate system.\newline}%
+            \label{fig:coordinate-system}%
+            %
+        \end{subfigure}%
+        %
+        \caption{Schematic representation of the JenaFox bipedal walking robot (\subref{fig:jenafox-wireframe}) with its associated coordinate system (\subref{fig:coordinate-system}). The bipedal robot consists of a torso connected to two segmented legs, each of which has an upper and a lower link. The abscissa axis (X-axis, orange) points in the direction of motion, the ordinate axis (Y-axis, green) points upward. The trunk of the robot is attached to a boom via a freely rotating joint which constrains the motion of the robot on a sphere. The planar motion is thus restricted to the sagittal plane (\ie the plane spanned between the abscissa axis and ordinate axis).}%
+        \label{fig:jenafox}%
+    \end{figure}
+    % \noindent
+    %
+    The simulation of the JenaFox robot is created in MATLAB\textsuperscript{\textregistered} Simulink R2022a as a Simscape multi-body model. The solver settings used for the simulation are listed in table~\ref{tab:solver-settings}.
+
+    \begin{table}[H]
+        \caption{Solver settings for the MATLAB\textsuperscript{\textregistered} Simulink simulation of the JenaFox robot.} 
+        \label{tab:solver-settings}
+        \begin{center}
+            \begin{tabular}{ l|l }
+                \textbf{Solver setting} & \textbf{Value}                \\ [0.5ex]
+                \hline \hline
+                Solver type             & variable-step                 \\
+                Solver                  & auto(\glsxtrshort{ode}15s)    \\ % \glsxtrshort{ode}23s (Min./ Rosenbrock) \\
+                Max step size           & 0.1                           \\
+                Min step size           & auto                          \\
+                Relative tolerance      & 0.01                          \\
+                Absolute tolerance      & 0.001                         \\
+            \end{tabular}
+        \end{center}
+    \end{table}
+    %

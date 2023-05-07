@@ -1,0 +1,143 @@
+% !TeX spellcheck = en_US
+\documentclass[]{standalone}%
+%
+% \input{../../../settings}%
+\usepackage{tikz}%
+\usetikzlibrary{3d, calc, decorations.pathmorphing, positioning}%
+%
+%
+\definecolor{TUMBlack}{cmyk}{0,0,0,1}%
+\definecolor{TUMBlue}{cmyk}{1,0.43,0,0}%           Pantone 300
+\definecolor{TUMBlue1}{cmyk}{1,0.57,0.12,0.7}%     Pantone 540
+\definecolor{TUMBlue2}{cmyk}{1,0.54,0.04,0.19}%    Pantone 301
+\definecolor{TUMBlue3}{cmyk}{0.65,0.19,0.01,0.04}% Pantone 542
+\definecolor{TUMBlue4}{cmyk}{0.42,0.09,0,0}%       Pantone 283
+\definecolor{TUMOrange}{cmyk}{0,0.65,0.95,0}%
+\definecolor{TUMGreen}{cmyk}{0.35,0,1,0.2}%
+\definecolor{TUMWhite}{cmyk}{0,0,0,0}%
+%
+\newcommand*{\LocalGlsGreen}[1]{\textcolor{TUMGreen}{#1}}%
+
+\newenvironment*{LocalGlsTextGreen}{%
+  \let\oldglstextformat\glstextformat
+  \renewcommand\glstextformat[1]{\LocalGlsGreen{##1}}% Set local format
+}
+
+\usepackage[acronyms, sanitizesort]{glossaries-extra}
+\setabbreviationstyle[acronym]{long-short}
+
+\loadglsentries{../../source/glossary.tex}% important update for glossaries, before document
+\loadglsentries[acronym]{../../source/acronyms}%
+%
+\begin{document}%
+%
+\begin{tikzpicture}[scale = 1, z={(-15:10mm)},x={(40:5mm)}]
+    %
+    \def\comradius{.6em};%
+    %
+    \tikzstyle{arrow} = [->, -latex, ultra thick, draw = TUMBlack]%
+    \tikzstyle{com} = [circle, inner sep = .43em, draw = TUMBlack, thick]%
+    \tikzstyle{dot} = [circle, minimum size = .4em, inner sep = 0em, fill = TUMBlack, draw = TUMBlack]%
+    \tikzstyle{dottedline} = [draw = TUMBlue, dotted, very thick]%
+    \tikzstyle{singlesupport} = [draw = TUMBlack!40]%
+    \tikzstyle{doublesupport} = [fill = TUMBlue, fill opacity=.2, draw = TUMBlue]%
+    \tikzstyle{spring} = [decoration = {coil, aspect = 0.5,  segment length = .3em,  amplitude = .3em,  pre length = 2em, post length = 1.5em}, decorate, thick, draw = TUMBlack]%
+    %
+    \def\springmass(#1){% Syntax (center)
+        \node [com, transform shape] at (#1) (center) {};%
+        \begin{scope}%
+            \clip (center) circle (\comradius);%
+            \fill[TUMWhite] let \p1 = (center) in (\x1, \y1) (\x1, \y1 - \comradius) rectangle (\x1 + \comradius, \y1);%
+            \fill[TUMWhite] let \p1 = (center) in (\x1, \y1) (\x1, \y1 + \comradius) rectangle (\x1 - \comradius, \y1);%
+            \fill[TUMBlack] let \p1 = (center) in (\x1, \y1) (\x1 + \comradius, \y1) rectangle (\x1, \y1 + \comradius);%
+            \fill[TUMBlack] let \p1 = (center) in (\x1, \y1) (\x1 - \comradius, \y1) rectangle (\x1, \y1 - \comradius);%
+        \end{scope}%
+        \node [com, transform shape] at (center) {};%
+    }
+    %
+    \def\wave{
+        \draw[thick, draw = TUMOrange]
+        (0,0) sin (1, 0.25) cos (2, 0) sin (3, -0.25) cos (4, 0)
+            sin (5, 0.25) cos (6, 0) sin (7, -0.25) cos (8, 0) sin (9, 0.25);
+    }
+    %
+    \begin{scope}[canvas is zx plane at y = -2]
+        % \draw[help lines] (0, -3) grid (9, 3);
+        % \draw [singlesupport] (0, -3) -- (0, 3) -- (3, 3) -- (3, -3) -- cycle;
+        % \draw [singlesupport] (3.5, -3) -- (3.5, 3) -- (7, 3) -- (7, -3) -- cycle;
+        % \draw [singlesupport] (7.5, -3) -- (7.5, 3) -- (9, 3) -- (9, -3) -- cycle;
+        \draw [singlesupport] (0, -3) -- (9.5, -3);
+        \draw [singlesupport] (0, 0) -- (9.5, 0);
+        \draw [singlesupport] (0, 3) -- (9.5, 3);
+        % \node at (6.5, -1.5) [text = TUMBlack] {single support};
+        %
+        \draw [doublesupport] (3, -3) -- (3, 3) -- (3.5, 3) -- (3.5, -3) -- cycle;
+        \draw [doublesupport] (7, -3) -- (7, 3) -- (7.5, 3) -- (7.5, -3) -- cycle;
+        \node at (3.25, -4.75) [align=center, text = TUMBlue] {double\\support};
+    \end{scope}
+    %
+    \begin{scope}[canvas is xy plane at z = 1]
+        \draw [fill = TUMGreen, fill opacity=.2, draw = TUMGreen] (-3, -2) -- (-3, 2) -- (3, 2) -- (3, -2) -- cycle;
+        
+    \end{scope}
+    %
+    \begin{scope}[canvas is xy plane at z = 5]
+        \draw [fill = TUMGreen, fill opacity=.2, draw = TUMGreen] (-3, -2) -- (-3, 2) -- (3, 2) -- (3, -2) -- cycle;
+    \end{scope}
+    %
+    \begin{scope}[canvas is zy plane at x = 0]
+        \wave
+        % \springmass(1, 0.25);%
+        \begin{LocalGlsTextGreen}
+            \node at (0, 1.75) [text = TUMGreen] {\glsxtrshort{vlo}$_{0}$};
+            \node at (4, 1.75) [text = TUMGreen] {\glsxtrshort{vlo}$_{1}$};
+        \end{LocalGlsTextGreen}
+        \node [com, transform shape] at (1, 0.25) (center) {};%
+        \begin{scope}%
+            \clip (center) circle (\comradius);%
+            \fill[TUMWhite] let \p1 = (center) in (\x1, \y1) (\x1, \y1 - \comradius) rectangle (\x1 + \comradius, \y1);%
+            \fill[TUMGreen!20] let \p1 = (center) in (\x1, \y1) (\x1, \y1 + \comradius) rectangle (\x1 - \comradius, \y1);%
+            \fill[TUMBlack] let \p1 = (center) in (\x1, \y1) (\x1 + \comradius, \y1) rectangle (\x1, \y1 + \comradius);%
+            \fill[TUMBlack] let \p1 = (center) in (\x1, \y1) (\x1 - \comradius, \y1) rectangle (\x1, \y1 - \comradius);%
+        \end{scope}%
+        \node [com, transform shape] at (center) {};%
+        \draw [spring] (1, -2) -- (center);%
+        \node at (1.2, -2.3) {FP\textsubscript{1}};
+        %
+        \springmass(3, -0.25);%
+        \draw [dottedline] (3, -2) -- (center.south);%
+        \draw [dottedline] (3.5, -2) -- (3.5, 0 |- -45:.25cm) node [dot, solid, fill = TUMBlue, draw = TUMBlue] {};
+        \draw [spring] (1, -2) -- (center);%
+        \draw [spring] (5, -2) -- (center);%
+        %
+        % \springmass(5, 0.25);%
+        \node [com, transform shape] at (5, 0.25) (center) {};%
+        \begin{scope}%
+            \clip (center) circle (\comradius);%
+            \fill[TUMWhite] let \p1 = (center) in (\x1, \y1) (\x1, \y1 - \comradius) rectangle (\x1 + \comradius, \y1);%
+            \fill[TUMGreen!20] let \p1 = (center) in (\x1, \y1) (\x1, \y1 + \comradius) rectangle (\x1 - \comradius, \y1);%
+            \fill[TUMBlack] let \p1 = (center) in (\x1, \y1) (\x1 + \comradius, \y1) rectangle (\x1, \y1 + \comradius);%
+            \fill[TUMBlack] let \p1 = (center) in (\x1, \y1) (\x1 - \comradius, \y1) rectangle (\x1, \y1 - \comradius);%
+        \end{scope}%
+        \node [com, transform shape] at (center) {};%
+        \draw [spring] (5, -2) -- (center);%
+        \node at (5.2, -2.3) {FP\textsubscript{2}};
+        %
+        \springmass(7, -0.25);%
+        \draw [dottedline] (7, -2) -- (center.south);%
+        \draw [dottedline] (7.5, -2) -- (7.5, 0 |- -45:.25cm) node [dot, solid, fill = TUMBlue, draw = TUMBlue] {};
+        \draw [spring] (5, -2) -- (center);%
+        \draw [spring] (9, -2) -- (center);%
+        \node at (8.5, .75) [text = TUMOrange, transform shape] {center of mass trajectory}; % (x, y)
+    \end{scope}
+    %
+    % Axes
+    \begin{scope}
+        \draw [arrow, draw = TUMGreen, text = TUMGreen] (-3, -2, 0) -- (-3, 0, 0) node [at end, left] {Y};
+        \draw [arrow, draw = TUMBlue, text = TUMBlue] (-3, -2, 0) -- (-3, -2, 2) node [at end, above] {X};
+    \end{scope}
+    %
+\end{tikzpicture}%
+%
+\end{document}%
+%

@@ -1,0 +1,18 @@
+% !TeX spellcheck = en_US
+\section{Vertical Leg Orientation}
+\label{sec:vlo}
+
+    The~\glsxtrfull{vlo} refers to the orientation of the leg of a bipedal robot relative to the ground and is defined as the angle between the ordinate axis (perpendicular to the ground) and the line connecting the foot and hip joint of the robot. In a normal walking gait, the~\glsxtrshort{vlo} changes throughout the stride cycle as the robot moves from one foot to the other. During the stance phase, the~\glsxtrshort{vlo} starts at a relatively small angle, increases as the robot transfers weight over the stance leg, and reaches its maximum value just before the swing phase. During the swing phase, the~\glsxtrshort{vlo} decreases as the swing leg moves forward, reaches its minimum value just before the footstrike, and then increases again as the swing leg moves into the stance phase.~\cite{Rummel2010}\\
+    
+    The JenaFox robot is capable of periodic gait patterns such as walking and running, where a gait pattern is fully described by the system parameters and initial conditions. In the course of this work, the initial conditions are chosen so that the stance leg is in contact with the ground and vertically oriented, \ie the~\glsxtrshort{com} is exactly above the foot point ($\gls{x}_{\glsxtrshort{com}} = \gls{x}_{FP_1}$), meaning that the horizontal position is zero with respect to the actual foot point. A single step is completed when the swing leg attains ground contact and the~\glsxtrshort{com} is orthogonally above the second foot point ($\gls{x}_{\glsxtrshort{com}} = \gls{x}_{FP_2}$), as shown in figure~\ref{fig:vlo}. The simulation starts at the moment of~\glsxtrlong{vlo} during single support phase (\glsxtrshort{vlo}$_0$) and ends after one step is completed at~\glsxtrshort{vlo} of the opposite leg (\glsxtrshort{vlo}$_1$). These initial conditions can be used to reduce the number of independent initial conditions.~\cite{Rummel2010}
+
+    \begin{figure}[htb]%
+        \centering%
+        \includestandalone{vlo/vlo}
+        \caption{The bipedal spring mass model for walking. The simulation starts at the moment of~\glsxtrfull{vlo} during single support phase (\glsxtrshort{vlo}$_0$, green) and ends after one step is completed at~\glsxtrshort{vlo} of the opposite leg (\glsxtrshort{vlo}$_1$, green). The phase of the double support is shown in blue. The trajectory of the~\glsxtrlong{com} is drawn in orange. (Adapted from~\cite{Rummel2010}, p. 1)}%
+        \label{fig:vlo}%
+    \end{figure}%
+    % \noindent
+    %
+
+    % \textcolor{red}{In order to identify periodic walking gaits we introduce a Poincare section at the instant of~\glsxtrfull{vlo} during single support (figure~\ref{fig:vlo}), that allows for the investigation of both, walking and running, with the same method. A legged system can be investigated by analyses of single-step Poincare maps of the state vector $S$ with~\glsxtrshort{vlo} as Poincare section. The mapping function is $S_{i+1} = F(S_i)$ where $i$ is the number of the individual step. $S_i$ denotes the system's state at the instant of~\glsxtrshort{vlo} with $S_i = [\gls{y}_i, \theta_i]^T$. A periodic gait pattern (limit-cycle trajectory) corresponds to a fixed point in the Poincare map $S* = F(S*)$. Stability of a periodic solution is estimated by calculating the effect of small perturbations in the neighborhood of the fixed point. Therefore, a linear approximation is applied \left[S_{i+1} - S*] = J(S*)[S_i - S*]$ where $J(S*)$ is the Jacobian matrix, with the eigenvalues $\lambda_j$ called Floquet multipliers. Dynamic stability of the periodic gait s indicated if the magnitude of all eigenvalues is smaller than one (Guckenheimer, 1983).}

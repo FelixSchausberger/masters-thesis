@@ -1,0 +1,14 @@
+% !TeX spellcheck = en_US
+\chapter{Implementation}%
+\label{sec:implementation}
+
+A MATLAB\textsuperscript{\textregistered} Simulink~\cite{MATLAB:2022} implementation of the JenaFox model, reflecting the test environment described in the upcoming section~\ref{sec:jenafox}, was provided. A modified neural network controller based on the work of~\citeauthor{Geng2006}~\cite{Geng2006} was used as a controller, which is discussed in more detail in section~\ref{sec:neural-controller}. The concept of~\glsxtrfull{vlo}, proposed by~\citeauthor*{Rummel2010}~\cite{Rummel2010} and described in section~\ref{sec:vlo}, was taken as initial and final condition,~\ie one iteration of the simulation consists of one full step or one half of a stride, respectively. The iterations were finally analyzed using a trajectory optimization, described in section~\ref{sec:trajectory-optimization}, in order to achieve a solution that is as periodic as possible, in other words, with as little difference as possible between the final and initial conditions of the robot.
+
+\input{source/03_implementation/03-1_jenafox}%
+\input{source/03_implementation/03-2_neural-network-controller}%
+\input{source/03_implementation/03-3_vertical-leg-orientation}%
+\input{source/03_implementation/03-4_trajectory-optimization}%
+
+\section{Summary}
+
+In this chapter the individual steps, which are necessary to design a controller for the torso stabilization of a bipedal robot, are considered in detail. A MATLAB\textsuperscript{\textregistered} Simulink implementation of the JenaFox model was provided. The used neural network controller is based on the work of~\citeauthor{Geng2006}~\cite{Geng2006}. The initial and final conditions are defined by the~\glsxtrfull{vlo}. In order to be able to evaluate the individual iterations, a trajectory optimization problem was formulated in which the best solution is also the most periodic one,~\ie the solution in which the difference between the initial state (\glsxtrshort{vlo}$_0$) and final state (\glsxtrshort{vlo}$_1$) is as small as possible. Furthermore, termination conditions were identified to avoid undesired behavior.

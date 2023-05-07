@@ -1,0 +1,20 @@
+\begin{frame}{Trajectory optimization~\cite{Rummel2010}~\cite{Renjewski2013}}%
+    \begin{columns}[T,onlytextwidth]%
+        \begin{column}[T]{0.5\textwidth}%
+            \begin{figure}[htb]%
+                \centering%
+                \includestandalone{vlo/vlo}
+            \end{figure}%
+        \end{column}%
+        \begin{column}[T]{0.35\textwidth}%
+            \begin{figure}[htb]%
+                \centering%
+                \includegraphics[width=\textwidth]{jenafox/basic-coordinates.png}
+            \end{figure}%
+        \end{column}%
+    \end{columns}%
+    \begin{align}
+        f &= \sum_{i = 3}^{7}~\lvert~q_i(\glsxtrshort{vlo}_1)~-~q_i(\glsxtrshort{vlo}_0)~\rvert~+~\lvert~\dot{q}_i(\glsxtrshort{vlo}_1)~-~\dot{q}_i(\glsxtrshort{vlo}_0)~\rvert \notag
+    \end{align}
+\end{frame}%
+%

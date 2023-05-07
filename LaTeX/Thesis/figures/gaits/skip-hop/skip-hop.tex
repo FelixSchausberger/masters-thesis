@@ -1,0 +1,70 @@
+% !TeX spellcheck = en_US
+\documentclass[]{standalone}%
+%
+% \input{../../../settings}%
+\usepackage{tikz}%
+\usetikzlibrary{positioning, decorations.text}%
+%
+\definecolor{TUMBlack}{cmyk}{0,0,0,1}%
+\definecolor{TUMBlue}{cmyk}{1,0.43,0,0}%           Pantone 300
+\definecolor{TUMBlue1}{cmyk}{1,0.57,0.12,0.7}%     Pantone 540
+\definecolor{TUMBlue2}{cmyk}{1,0.54,0.04,0.19}%    Pantone 301
+\definecolor{TUMBlue3}{cmyk}{0.65,0.19,0.01,0.04}% Pantone 542
+\definecolor{TUMBlue4}{cmyk}{0.42,0.09,0,0}%       Pantone 283
+\definecolor{TUMOrange}{cmyk}{0,0.65,0.95,0}%
+\definecolor{TUMGreen}{cmyk}{0.35,0,1,0.2}%
+%
+%
+\begin{document}%
+%
+\begin{tikzpicture}[scale = 1, even odd rule]%
+  %
+  \tikzstyle{background} = [thick, draw = TUMBlack!40]%
+  \tikzstyle{dot} = [circle, minimum size = .42em, inner sep = 0em, fill = TUMBlack, draw = TUMBlack]%
+  %
+  \coordinate (origin) at (0, 0);%
+  \node [above = 6em of origin] (north) {0};
+  \node [left = 6em of origin] (east) {0.25};%
+  \node [below = 6em of origin] (south) {0.50};%
+  \node [right = 6em of origin] (west) {0.75};%
+  %
+  \path[fill = TUMBlue!20, background] (origin) circle[radius = 5em] circle[radius= 4em];%
+  % \path[fill = TUMGreen!20, background] (origin) circle[radius = 4em] circle[radius= 3em];%
+  % %
+  % \draw[decoration={
+  %   text along path,
+  %   text={fore},
+  %   text align={center},
+  %   raise=0.15em, text color = TUMGreen},
+  %   decorate] (180:3em) arc (180:135:3em); 
+  %
+  \draw[decoration={
+    text along path,
+    text={hind},
+    text align={center},
+    raise=0.15em, text color = TUMBlue},
+    decorate] (180:4em) arc (180:135:4em); 
+  %
+  \draw [background] (east) -- (west);%
+  \draw [background] (north) -- (south);%
+  \begin{scope}[transform canvas={rotate=-45}]
+    \draw [background] (east) -- (west);%
+    \draw [background] (north) -- (south);%
+    \node [dot, below = 1.04em of north] {};%
+  \end{scope}%
+  %
+  \node [dot, below = 1.04em of north] {};%
+  \node [dot, draw = TUMOrange, fill = TUMOrange] at (-.27em, 4.26em) {};%
+  \node [dot, draw = TUMOrange, fill = TUMOrange] at (.27em, 4.26em) {};%
+  %
+  % Legend
+  % \matrix [draw, below left] at (current bounding box.north east) {
+  % \node [label = right:force angle $\theta$] {}; \\
+  % \node [label = right:velocity angle $\lambda$] {}; \\
+  % \node [label = right:collision angle $\phi$] {}; \\
+  % };%
+  %
+\end{tikzpicture}%
+%
+\end{document}%
+%

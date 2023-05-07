@@ -1,0 +1,73 @@
+\documentclass[]{standalone}%
+%
+\usepackage{tikz}%
+\usetikzlibrary{timeline}%
+%
+\definecolor{TUMBlack}{cmyk}{0,0,0,1}%
+\definecolor{TUMBlue}{cmyk}{1,0.43,0,0}%           Pantone 300
+\definecolor{TUMBlue1}{cmyk}{1,0.57,0.12,0.7}%     Pantone 540
+\definecolor{TUMBlue2}{cmyk}{1,0.54,0.04,0.19}%    Pantone 301
+\definecolor{TUMBlue3}{cmyk}{0.65,0.19,0.01,0.04}% Pantone 542
+\definecolor{TUMBlue4}{cmyk}{0.42,0.09,0,0}%       Pantone 283
+\definecolor{TUMOrange}{cmyk}{0,0.65,0.95,0}%
+\definecolor{TUMGreen}{cmyk}{0.35,0,1,0.2}%
+%
+\begin{document}%
+%
+\begin{tikzpicture}[timespan={}]%
+    %
+    % State number of months
+    \timeline[custom interval=true]{Sep., Oct., Nov., Dec., Jan., Feb., Mar.}
+    %
+    % Define time phases
+    \begin{phases}
+        \initialphase{involvement degree=2.5cm,phase color=TUMBlue1}%
+        %
+        \phase{between month=1 and 2 in 0.3,
+        involvement degree=3cm,phase color=TUMBlue}%
+        %
+        \phase{between month=2 and 3 in 0.4,
+        involvement degree=5cm,phase color=red!40!yellow}%
+        %
+        \phase{between month=3 and 4 in 0.5,
+        involvement degree=6.5cm,phase color=TUMOrange!20!red}%
+        %
+        \phase{between month=4 and 5 in 0.8,
+        involvement degree=6cm,phase color=TUMOrange!60!red}%
+        %
+        \phase{between month=6 and 7 in 0.1,
+        involvement degree=3.5cm,phase color=TUMOrange}%
+        %
+        \phase{between month=6 and 7 in 1,
+        involvement degree=3cm,phase color=TUMGreen}%
+    \end{phases}%
+    %
+    % Add milestones on the upper side of the timeline
+    \addmilestone{at=phase-0.120,direction=120:1cm,
+        text={Topic proposals}, text options={above}}%
+    \addmilestone{at=phase-1.110,direction=110:1.5cm,
+        text={14.09.22: Kick-off Meeting}}%
+    \addmilestone{at=phase-2.090,direction=70:1.2cm,
+        text={Research}}%
+    \addmilestone{at=phase-3.90,direction=90:1.5cm,
+        text={Implementation}}%
+    \addmilestone{at=phase-4.80,direction=100:1.2cm,
+        text={Writing}}%
+    \addmilestone{at=phase-5.99,direction=100:1.5cm,
+        text={Buffer}}%
+    \addmilestone{at=phase-6.82,direction=80:0.8cm,
+        text={15.03.23: Submission}}%
+    % 
+    \addmilestone{at=phase-1.250,direction=250:1cm,
+        text={Preparation}, text options={below}}%
+    \addmilestone{at=phase-2.270,direction=270:1cm,
+        text={11.10.22: Initial presentation}}%
+    \addmilestone{at=phase-5.290,direction=270:1.8cm,
+        text={01.03.23: Final draft}}%
+    \addmilestone{at=phase-6.300,direction=300:1cm,
+        text={Final presentation}}%
+    %
+\end{tikzpicture}%
+%
+\end{document}%
+%

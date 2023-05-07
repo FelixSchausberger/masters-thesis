@@ -1,0 +1,46 @@
+figure;
+subplot(2, 1, 1);
+hold on;
+% plot(touchdown_history.alpha_hip, touchdown_history.lambda_hip, 'x', ...
+%     'LineWidth', 3, 'MarkerSize', 15, 'Displayname', 'Hip');
+% plot(touchdown_history.alpha_hip(end), touchdown_history.lambda_hip(end), ...
+%     'x', 'DisplayName', 'Best hip', 'LineWidth', 3, 'MarkerSize', 20);
+% 
+% plot(touchdown_history.alpha_com, touchdown_history.lambda_com, 'x', ...
+%     'LineWidth', 3, 'MarkerSize', 15, 'Displayname', 'CoM');
+% plot(touchdown_history.alpha_com(end), touchdown_history.lambda_com(end), ...
+%     'x', 'DisplayName', 'Best CoM', 'LineWidth', 3, 'MarkerSize', 20);
+
+plot(touchdown_history.alpha_hip, touchdown_history.lambda_proj, 'x', ...
+    'LineWidth', 3, 'MarkerSize', 15, 'Displayname', 'projected');
+plot(touchdown_history.alpha_hip(end), touchdown_history.lambda_proj(end), ...
+    'x', 'DisplayName', 'Best hip', 'LineWidth', 3, 'MarkerSize', 20);
+
+ref_min = min([touchdown_history.alpha_hip; touchdown_history.lambda_hip; ...
+    touchdown_history.alpha_com; touchdown_history.lambda_com]) - 2;
+ref_max = max([touchdown_history.alpha_hip; touchdown_history.lambda_hip; ...
+    touchdown_history.alpha_com; touchdown_history.lambda_com]) + 2;
+plot(ref_min:ref_max, ref_min:ref_max, 'k--', ...
+    'DisplayName', 'Reference', 'LineWidth', 3);
+xlabel('$\alpha$');
+ylabel('$\lambda$');
+axis equal;
+legend show;
+grid on;
+
+subplot(2, 1, 2);
+hold on;
+plot(solution.mechanical_cost_analysis.alpha_hip.time, solution.mechanical_cost_analysis.alpha_hip.data, ...
+    'DisplayName', '\alpha_{hip}', 'LineWidth', 3);
+% plot(solution.mechanical_cost_analysis.lambda_hip.time, solution.mechanical_cost_analysis.lambda_hip.data, ...
+%     'DisplayName', '\lambda_{hip}', 'LineWidth', 3);
+plot(solution.mechanical_cost_analysis.alpha_com.time, solution.mechanical_cost_analysis.alpha_com.data, ...
+    'DisplayName', '\alpha_{com}', 'LineWidth', 3);
+% plot(solution.mechanical_cost_analysis.lambda_com.time, solution.mechanical_cost_analysis.lambda_com.data, ...
+%     'DisplayName', '\lambda_{com}', 'LineWidth', 3);
+plot(solution.mechanical_cost_analysis.lambda_proj.time, solution.mechanical_cost_analysis.lambda_proj.data, ...
+    'DisplayName', '\lambda_{proj}', 'LineWidth', 3);
+xlabel('$Time [s]$');
+ylabel('$Magnitude [^\circ]$');
+legend show;
+grid on;

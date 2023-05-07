@@ -1,0 +1,29 @@
+\begin{frame}{\acrfull{vpp}}%
+    \begin{columns}[T,onlytextwidth]%
+        \begin{column}[T]{0.48\textwidth}%
+            \begin{itemize}
+                \item Takes leg orientation into account % In contrast to a conventional PD controller
+                \item If the \acrshort{vpp} is aligned with the leg, no torso torque is applied and the resulting \acrfull{grf} is directed at the hip joint. (left)
+                \item When the torso is tilted backwards, a negative torso torque must be applied to align the \acrshort{grf} with the \acrshort{vpp}. (right) % The torso torque results in an additional GRF at the foot, denoted by F_T . The spring force F_S and the torso torque F_T combine to a resultant GRF, denoted by F, directed at the VPP.
+            \end{itemize}%
+        \end{column}%
+        \begin{column}[T]{0.48\textwidth}%
+            \begin{figure}[htb]%
+                \centering%
+                \includestandalone{figures/virtual-pivot-point/virtual-pivot-point}%
+                \caption{Schematic representation of the \acrshort{vpp}, a fixed point on the torso above the \acrshort{com}, where the \acrshortpl{grf} are directed via a hip torque. (Adapted from~\cite{Maus2010}, p. 3)}%
+                \label{fig:virtual-pivot-point}%
+            \end{figure}%
+        \end{column}%
+    \end{columns}%
+\end{frame}%
+%
+\note[itemize]{%
+    \item When \acrshort{grf} always directs at \acrshort{vpp}: becomes virtual hinge around which the torso will rotate
+    \item Transforms difficult task of balancing inverted pendulum to system consisting of pendulum suspended from hinge, which is intrinsically stable
+}%
+% 
+% (Bommel, 2011): When the GRF always directs at the VPP, the VPP becomes a virtual hinge around which the torso will rotate. Essentially, this transforms the difficult task of balancing an inverted pendulum to a system consisting of a pendulum suspended from a hinge, which is intrinsically stable.
+%
+% (Bommel, 2011): The controller can exert a torso torque only during the stance phase, since no GRF are present during the flight phase.
+%

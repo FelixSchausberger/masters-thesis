@@ -1,0 +1,38 @@
+\begin{frame}[fragile=singleslide]{Collision based approach}% [shrink=20]
+    \shorthandoff{"} % Needed for quotes
+    \begin{columns}[T,onlytextwidth]%
+        \begin{column}[T]{0.48\textwidth}%
+            \begin{itemize}
+                \item If $F \perp V$: No collision occurs
+                \item Discrete footfalls: $F \not\perp V$: Kinetic energy is lost~\cite{Biewener2018}
+                % Discrete footfalls preclude a consistent perpendicular relationship~\cite{Biewener2018}
+                % \item Kinetic energy is lost as ground reaction force does mechanical work on centre of mass ($CoM$)
+                % \item Quantified: Mechanical cost of transport ($CoT_{mech}$)
+            \end{itemize}%
+            Key advantages:~\cite{Lee2013}
+            \begin{itemize}
+                \item \acrfull{com} dynamics get considered in every instance of contact during stride
+                \item Dimensionless % , allowing comparisons across species of vastly different size and comparisons across gravity conditions
+                \item Independent of a priori models % of \acrshort{com} mechanics applies equally to any gait
+                \item Explains the mechanical \acrfull{cot} from first principles
+            \end{itemize}%
+        \end{column}%
+        \begin{column}[T]{0.48\textwidth}%
+            \begin{figure}[htb]%
+                \centering%
+                \includestandalone{figures/collision-based-approach/collision-based-approach}%
+                \caption{Schematic representation of the collision based approach. Shown are the force vector $F$ and velocity vector $V$ with their corresponding angles, $\theta$ and $\lambda$. The collision angle $\phi$ is the deviation of the orthogonal relation between $F$ and $V$. (Adapted from~\cite{Lee2011}, p. 4)}%
+                \label{fig:collision-based-approach}%
+            \end{figure}%
+        \end{column}%
+    \end{columns}%
+\end{frame}%
+%
+\note[itemize]{%
+    \item Mechanics: Modeled in terms of “inelastic” collisions by limb with ground
+    \item If $F \perp V$: No collision occurs: No work done at \acrshort{com},~\eg wheel without rim but infinite spokes
+    \item Intermittent foot contacts during legged locomotion result in relatively abrupt, collision-like changes in \acrshort{com} direction, which require mechanical work
+    \item Dimensionless, allowing comparisons across species of vastly different size and comparisons across gravity conditions
+    \item Independent of a priori models of \acrshort{com} mechanics: applies equally to any gait
+}%
+%

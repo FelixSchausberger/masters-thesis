@@ -1,0 +1,75 @@
+\usepackage{xspace}%
+\def\eg{e.g.\@\xspace}%
+\def\ie{i.e.\@\xspace}%
+%
+% Table positioning
+\usepackage{float}%
+%
+% Tikz libraries
+\usepackage{standalone}%
+\usepackage{subcaption}%
+\usetikzlibrary{3d, angles, datavisualization.formats.functions, decorations.text, calc, patterns, positioning, quotes}%
+%
+% Insert blank page
+% \usepackage{afterpage}
+% \newcommand\blankpage{%
+%     \null
+%     \thispagestyle{empty}%
+%     \addtocounter{page}{-1}%
+%     \newpage}
+%
+% SI units
+\usepackage[per-mode=fraction]{siunitx}%
+\DeclareSIUnit[quantity-product = {}]
+\fps{\text{fps}}
+%
+% Glossaries
+\usepackage[acronyms, sanitizesort]{glossaries-extra}
+\setabbreviationstyle[acronym]{long-short}
+\makenoidxglossaries%
+%
+% New environment for local gls link format
+\newcommand*{\LocalGlsOrange}[1]{\textcolor{TUMOrange}{#1}}%
+\newcommand*{\LocalGlsGreen}[1]{\textcolor{TUMGreen}{#1}}%
+\newcommand*{\LocalGlsBlue}[1]{\textcolor{TUMBlue}{#1}}%
+\newcommand*{\LocalGlsBlueOrange}[1]{\textcolor{TUMBlue2!70!TUMOrange}{#1}}%
+
+\newenvironment*{LocalGlsTextOrange}{%
+  \let\oldglstextformat\glstextformat
+  \renewcommand\glstextformat[1]{\LocalGlsOrange{##1}}% Set local format
+}
+
+\newenvironment*{LocalGlsTextGreen}{%
+  \let\oldglstextformat\glstextformat
+  \renewcommand\glstextformat[1]{\LocalGlsGreen{##1}}% Set local format
+}
+
+\newenvironment*{LocalGlsTextBlue}{%
+  \let\oldglstextformat\glstextformat
+  \renewcommand\glstextformat[1]{\LocalGlsBlue{##1}}% Set local format
+}
+
+\newenvironment*{LocalGlsTextBlueOrange}{%
+  \let\oldglstextformat\glstextformat
+  \renewcommand\glstextformat[1]{\LocalGlsBlueOrange{##1}}% Set local format
+}
+
+\loadglsentries{source/glossary}% important update for glossaries, before document
+\loadglsentries[acronym]{source/acronyms}%
+%
+% Set paths
+\graphicspath{{figures/}}%
+\addbibresource{source/literature.bib}%
+%
+% Set meta data
+% -------------
+\newcommand*{\getUniversity}{Technische Universität München}%
+\newcommand*{\getFaculty}{Department of Informatics}%
+\newcommand*{\getTitle}{Comparison of Controllers for Trunk Stabilization in a Bipedal Robot}%
+\newcommand*{\getTitleGer}{Vergleich von Reglern für die Rumpfstabilisierung in einem zweibeinigen Roboter}%
+\newcommand*{\getAuthor}{Felix Schausberger}%
+\newcommand*{\getDoctype}{Master's Thesis in Robotics, Cognition, Intelligence}%
+\newcommand*{\getSupervisor}{Dr.-Ing. Daniel Renjewski}%
+\newcommand*{\getAdvisor}{Dr.-Ing. Daniel Renjewski}%
+\newcommand*{\getSubmissionDate}{15.03.2023}%
+\newcommand*{\getSubmissionLocation}{Munich}%

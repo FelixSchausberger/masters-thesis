@@ -1,0 +1,55 @@
+% !TeX spellcheck = en_US
+\documentclass[]{standalone}%
+%
+% \input{../../../settings}%
+\usepackage[per-mode=fraction]{siunitx}%
+\usepackage{tikz}%
+\usetikzlibrary{3d, calc, decorations.pathmorphing, positioning, datavisualization.formats.functions}%
+%
+%
+\definecolor{TUMBlack}{cmyk}{0,0,0,1}%
+\definecolor{TUMBlue}{cmyk}{1,0.43,0,0}%           Pantone 300
+\definecolor{TUMBlue1}{cmyk}{1,0.57,0.12,0.7}%     Pantone 540
+\definecolor{TUMBlue2}{cmyk}{1,0.54,0.04,0.19}%    Pantone 301
+\definecolor{TUMBlue3}{cmyk}{0.65,0.19,0.01,0.04}% Pantone 542
+\definecolor{TUMBlue4}{cmyk}{0.42,0.09,0,0}%       Pantone 283
+\definecolor{TUMOrange}{cmyk}{0,0.65,0.95,0}%
+\definecolor{TUMGreen}{cmyk}{0.35,0,1,0.2}%
+\definecolor{TUMWhite}{cmyk}{0,0,0,0}%
+%
+\usepackage[acronyms, sanitizesort]{glossaries-extra}
+\setabbreviationstyle[acronym]{long-short}
+\newcommand*{\LocalGlsBlue}[1]{\textcolor{TUMBlue}{\textbf{#1}}}%
+\newenvironment*{LocalGlsTextBlue}{%
+  \let\oldglstextformat\glstextformat
+  \renewcommand\glstextformat[1]{\LocalGlsBlue{##1}}% Set local format
+}
+
+\loadglsentries{../../../source/glossary.tex}% important update for glossaries, before document
+\loadglsentries[acronym]{../../../source/acronyms}%
+%
+%
+\begin{document}%
+%
+\begin{tikzpicture}[scale = 1]
+    %
+    \datavisualization [
+      scientific axes, 
+      visualize as line/.list = {2,3,4},
+      style sheet = vary dashing,
+      2 = {style = {ultra thick, TUMOrange}, label in legend = {text = $-0.2 \cdot \gls{rho} - 25$}},
+      3 = {style = {ultra thick, TUMGreen}, label in legend = {text = $-0.3 \cdot \gls{rho} - 25$}},
+      4 = {style = {ultra thick, TUMBlue}, label in legend = {text = $-0.4 \cdot \gls{rho} - 25$}},
+      all axes = {grid},
+      x axis = {label = {$\gls{rho}~\left[\si{\degree}\right]$}},
+      y axis = {include value = 0, include value = -25, label = {\glsxtrshort{aea}$~\left[\si{\degree}\right]$}}]
+    data [format = function] {
+      var set : {2,...,4};
+      var x : interval [-60:-5];
+      func y = -\value{set}/10 * \value x - 25;
+    };
+    %
+\end{tikzpicture}%
+%
+\end{document}%
+%
